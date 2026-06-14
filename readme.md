@@ -1,899 +1,248 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Aryan Patel — AI/ML & AI Full Stack Engineer</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
-<style>
-  :root {
-    --bg: #070910;
-    --surface: #0d1117;
-    --surface2: #161b22;
-    --border: #21262d;
-    --border2: #30363d;
-    --text: #e6edf3;
-    --muted: #7d8590;
-    --accent: #58a6ff;
-    --accent2: #3fb950;
-    --accent3: #f78166;
-    --accent4: #d2a8ff;
-    --yellow: #e3b341;
-    --cyan: #39d353;
-    --orange: #f0883e;
-  }
+<div align="center">
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Inter', sans-serif;
-    font-size: 15px;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
+# Aryan Patel
+### AI/ML & Full-Stack Engineer · Solo Founder @ VelocityFly AI
 
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: rgba(7,9,16,0.88);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 56px;
-  }
-  .nav-logo { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: 0.05em; }
-  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-  .nav-links a { color: var(--muted); font-size: 13px; text-decoration: none; font-weight: 500; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--text); }
-  .nav-cta { background: var(--accent); color: #000; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 700; text-decoration: none; transition: opacity 0.2s; }
-  .nav-cta:hover { opacity: 0.85; }
+[![GitHub](https://img.shields.io/badge/GitHub-aryan--Patel--web-181717?style=flat&logo=github)](https://github.com/aryan-Patel-web)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Aryan_Patel-0A66C2?style=flat&logo=linkedin)](https://www.linkedin.com/in/aryan-patel-97396524b/)
+[![VelocityFly](https://img.shields.io/badge/🚀-VelocityFly.com-FF6B35?style=flat)](https://velocityfly.com)
+[![Resume](https://img.shields.io/badge/📄-Resume-4CAF50?style=flat)](https://drive.google.com/file/d/19f70uialc6PYCukJg5cgMQhgotIv27bj/view?usp=drivesdk)
+[![Email](https://img.shields.io/badge/📧-patelaryan77462@gmail.com-EA4335?style=flat)](mailto:patelaryan77462@gmail.com)
 
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh; display: flex; align-items: center;
-    padding: 80px 2rem 4rem; position: relative; overflow: hidden;
-  }
-  .hero::before {
-    content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
-    width: 900px; height: 600px;
-    background: radial-gradient(ellipse, rgba(88,166,255,0.08) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .hero-inner { max-width: 900px; margin: 0 auto; width: 100%; }
-  .hero-eyebrow {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px; color: var(--accent2); letter-spacing: 0.1em; text-transform: uppercase;
-    margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;
-  }
-  .hero-eyebrow::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--accent2); }
-  .hero h1 {
-    font-size: clamp(2.4rem, 6vw, 4.5rem); font-weight: 900; line-height: 1.05;
-    letter-spacing: -0.03em; margin-bottom: 0.4rem;
-  }
-  .hero h1 .name { color: var(--text); }
-  .hero-tagline {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: clamp(11px, 1.5vw, 13px); color: var(--muted);
-    letter-spacing: 0.04em; margin-bottom: 1.5rem; line-height: 1.6;
-  }
-  .hero-tagline .hl { color: var(--accent); }
-  .hero-tagline .hl2 { color: var(--accent2); }
-  .hero-tagline .hl3 { color: var(--accent4); }
-  .hero-tagline .hl4 { color: var(--yellow); }
-  .hero-desc { font-size: 1rem; color: var(--muted); max-width: 600px; margin-bottom: 2rem; line-height: 1.75; }
-  .hero-desc strong { color: var(--text); font-weight: 600; }
+**B.Tech CSE · IIIT Manipur · Expected 2027 · Open to SDE / AI / MLOps Roles**
 
-  .hero-stats { display: flex; flex-wrap: wrap; gap: 0; margin-bottom: 2.5rem; }
-  .stat {
-    display: flex; flex-direction: column;
-    padding: 0.75rem 1.5rem 0.75rem 0;
-    border-right: 1px solid var(--border);
-    margin-right: 1.5rem;
-  }
-  .stat:last-child { border-right: none; }
-  .stat-num { font-family: 'JetBrains Mono', monospace; font-size: 1.6rem; font-weight: 700; color: var(--text); line-height: 1; }
-  .stat-num span { color: var(--accent); }
-  .stat-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 3px; }
+</div>
 
-  .hero-btns { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-  .btn-primary { background: var(--accent); color: #000; padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 700; text-decoration: none; transition: opacity 0.2s; display: flex; align-items: center; gap: 6px; }
-  .btn-primary:hover { opacity: 0.85; }
-  .btn-secondary { background: transparent; color: var(--text); padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; border: 1px solid var(--border2); transition: border-color 0.2s, color 0.2s; display: flex; align-items: center; gap: 6px; }
-  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+---
 
-  /* ── SHARED SECTION ── */
-  section { padding: 5rem 2rem; }
-  .container { max-width: 1060px; margin: 0 auto; }
-  .section-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.4rem; }
-  .section-title { font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 2.5rem; color: var(--text); }
-  .section-divider { border: none; border-top: 1px solid var(--border); margin: 0 2rem; }
+## About
 
-  /* ── SKILLS ── */
-  /* 3-column top row, 2-column bottom row — all equal height */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-  .skill-card {
-    background: var(--surface);
-    border-radius: 12px; padding: 1.25rem;
-    transition: transform 0.2s, border-color 0.2s;
-    border: 1px solid transparent;
-  }
-  .skill-card:hover { transform: translateY(-2px); }
-  /* coloured left border = the personality */
-  .skill-card.sk-ai    { border-left: 3px solid var(--accent); }
-  .skill-card.sk-mlops { border-left: 3px solid var(--accent2); }
-  .skill-card.sk-genai { border-left: 3px solid var(--accent4); }
-  .skill-card.sk-fs    { border-left: 3px solid var(--yellow); }
-  .skill-card.sk-db    { border-left: 3px solid var(--orange); }
-  /* bottom two cards span wider so they don't look lonely */
-  .skill-card.sk-fs, .skill-card.sk-db { grid-column: span 1; }
+Solo Founder of **VelocityFly AI** — a live AI SaaS that has automated **600+ YouTube Shorts**, generated **70K+ organic views**, and driven **140+ affiliate clicks** with zero paid promotion. Building production AI systems end-to-end: MLOps pipelines on **AWS EKS** with DVC + MLflow, LLM-powered automation with FastAPI + Mistral, and full-stack React dashboards. **Top 1%** in Amazon ML Challenge among 183,000+ participants.
 
-  .skill-card-title { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem; }
-  .sk-ai    .skill-card-title { color: var(--accent); }
-  .sk-mlops .skill-card-title { color: var(--accent2); }
-  .sk-genai .skill-card-title { color: var(--accent4); }
-  .sk-fs    .skill-card-title { color: var(--yellow); }
-  .sk-db    .skill-card-title { color: var(--orange); }
+---
 
-  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
-  .skill-tag {
-    background: var(--surface2); color: var(--muted);
-    padding: 3px 9px; border-radius: 4px;
-    font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 500;
-    border: 1px solid var(--border);
-    transition: color 0.15s, border-color 0.15s;
-  }
-  .sk-ai    .skill-tag:hover { color: var(--accent);  border-color: var(--accent); }
-  .sk-mlops .skill-tag:hover { color: var(--accent2); border-color: var(--accent2); }
-  .sk-genai .skill-tag:hover { color: var(--accent4); border-color: var(--accent4); }
-  .sk-fs    .skill-tag:hover { color: var(--yellow);  border-color: var(--yellow); }
-  .sk-db    .skill-tag:hover { color: var(--orange);  border-color: var(--orange); }
+## Stats at a Glance
 
-  @media (max-width: 860px) { .skills-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 540px) { .skills-grid { grid-template-columns: 1fr; } }
+| Metric | Value |
+|---|---|
+| GitHub Commits | **1,650+** |
+| Organic YouTube Views | **70K+** |
+| Affiliate Clicks (Zero Paid Ads) | **140+** |
+| Shorts Auto-Published | **600+** |
+| Live Users | **10** |
+| Amazon ML Challenge Rank | **Top 1% · 183K+ participants** |
+| Production Systems Live | **4** |
 
-  /* ── EXPERIENCE ── */
-  .exp-list { display: flex; flex-direction: column; gap: 1.25rem; }
-  .exp-card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 12px; padding: 1.5rem; position: relative; overflow: hidden;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-  .exp-card:hover { border-color: var(--border2); transform: translateY(-1px); }
-  .exp-card.featured { border-color: rgba(88,166,255,0.3); }
-  .exp-card.featured::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent4)); }
-  .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem; }
-  .exp-role { font-size: 1rem; font-weight: 700; color: var(--text); }
-  .exp-company { font-size: 13px; color: var(--accent); font-weight: 600; margin-top: 2px; }
-  .exp-duration { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); background: var(--surface2); padding: 3px 8px; border-radius: 4px; white-space: nowrap; }
-  .exp-stack { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.85rem; }
-  .exp-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--accent); background: rgba(88,166,255,0.08); border: 1px solid rgba(88,166,255,0.2); padding: 2px 7px; border-radius: 4px; }
-  .exp-bullets { list-style: none; }
-  .exp-bullets li { font-size: 13px; color: var(--muted); padding: 3px 0 3px 1rem; position: relative; line-height: 1.55; }
-  .exp-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--accent2); font-size: 11px; top: 5px; }
+---
 
-  /* traction banner */
-  .traction-banner {
-    background: var(--surface2); border: 1px solid rgba(63,185,80,0.3);
-    border-radius: 8px; padding: 1rem 1.25rem;
-    display: flex; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 1rem;
-  }
-  .traction-item { display: flex; flex-direction: column; }
-  .traction-num { font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; font-weight: 700; color: var(--accent2); line-height: 1; }
-  .traction-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+## Tech Stack
 
-  /* multi-platform pills */
-  .platform-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.6rem 0 0.75rem; }
-  .plat-pill {
-    font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px;
-    text-decoration: none; display: flex; align-items: center; gap: 4px;
-    transition: opacity 0.2s;
-  }
-  .plat-pill:hover { opacity: 0.8; }
-  .plat-yt   { background: #ff000022; color: #ff4444; border: 1px solid #ff444444; }
-  .plat-ig   { background: #e1306c22; color: #e1306c; border: 1px solid #e1306c44; }
-  .plat-fb   { background: #1877f222; color: #4e9af1; border: 1px solid #1877f244; }
-  .plat-wa   { background: #25d36622; color: #25d366; border: 1px solid #25d36644; }
-  .plat-rd   { background: #ff451422; color: #ff6534; border: 1px solid #ff451444; }
-  .plat-li   { background: #0a66c222; color: #4da6f5; border: 1px solid #0a66c244; }
+### ⚙️ AI / Machine Learning
+`Scikit-learn` `XGBoost` `TensorFlow` `PyTorch` `NLP` `Deep Learning` `Feature Engineering` `EDA` `Ensemble Methods` `LSTM` `ANN`
 
-  /* ── PROJECTS ── */
-  /* two-column grid; VelocityFly spans full width */
-  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
-  .proj-card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 12px; padding: 1.5rem;
-    display: flex; flex-direction: column; gap: 0.85rem;
-    transition: border-color 0.2s, transform 0.2s; position: relative; overflow: hidden;
-  }
-  .proj-card:hover { border-color: var(--border2); transform: translateY(-2px); }
-  .proj-card.full-width { grid-column: 1 / -1; }
+### ☸️ MLOps & Cloud
+`DVC` `MLflow` `DagsHub` `Docker` `Kubernetes` `AWS EKS` `AWS EC2` `AWS ECR` `AWS S3` `GitHub Actions` `CI/CD` `Prometheus` `Grafana`
 
-  .proj-card.mlops-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent2), var(--accent)); }
-  .proj-card.ai-card::before   { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent4)); }
-  .proj-card.genai-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent4), var(--accent3)); }
-  .proj-card.fs-card::before    { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--yellow), var(--orange)); }
+### 🧠 GenAI & LLMOps
+`LangChain` `LangGraph` `CrewAI` `RAG` `Prompt Engineering` `Mistral` `Groq` `Ollama` `ChromaDB` `FAISS` `ElevenLabs` `AI Agents`
 
-  .proj-badge { display: inline-flex; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; padding: 3px 8px; border-radius: 4px; text-transform: uppercase; width: fit-content; }
-  .badge-mlops    { background: rgba(63,185,80,0.12);  color: var(--accent2); border: 1px solid rgba(63,185,80,0.25); }
-  .badge-ai       { background: rgba(88,166,255,0.1);  color: var(--accent);  border: 1px solid rgba(88,166,255,0.2); }
-  .badge-genai    { background: rgba(210,168,255,0.1); color: var(--accent4); border: 1px solid rgba(210,168,255,0.2); }
-  .badge-fullstack{ background: rgba(227,179,65,0.1);  color: var(--yellow);  border: 1px solid rgba(227,179,65,0.2); }
+### 🌐 Full-Stack
+`React` `Vite` `Tailwind CSS` `FastAPI` `Node.js` `Express.js` `Flask` `REST APIs` `JWT` `WebSockets` `Next.js`
 
-  .proj-title { font-size: 1.05rem; font-weight: 700; color: var(--text); line-height: 1.25; }
-  .proj-desc  { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
-  .proj-highlights { list-style: none; }
-  .proj-highlights li { font-size: 12px; color: var(--muted); padding: 2px 0 2px 1rem; position: relative; }
-  .proj-highlights li::before { content: '▸'; position: absolute; left: 0; color: var(--accent); font-size: 9px; top: 4px; }
-  .proj-stack { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: auto; padding-top: 0.5rem; }
-  .proj-tech { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); background: var(--surface2); padding: 2px 6px; border-radius: 3px; }
-  .proj-links { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-  .proj-link { font-size: 11px; color: var(--accent); text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 3px; padding: 4px 10px; border: 1px solid rgba(88,166,255,0.25); border-radius: 5px; transition: background 0.2s; }
-  .proj-link:hover { background: rgba(88,166,255,0.1); }
-  .proj-link.green { color: var(--accent2); border-color: rgba(63,185,80,0.25); }
-  .proj-link.green:hover { background: rgba(63,185,80,0.1); }
+### 🗄️ Databases & Tools
+`MongoDB Atlas` `PostgreSQL` `InfluxDB` `Redis` `FFmpeg` `OpenCV` `Git` `Linux` `Streamlit` `BullMQ` `Postman` `Jupyter`
 
-  .pipeline { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 1rem 1.25rem; overflow-x: auto; white-space: pre; line-height: 1.6; margin: 0.5rem 0; }
-  .pipeline .hl  { color: var(--accent2); }
-  .pipeline .hl2 { color: var(--accent); }
+---
 
-  /* user flows inside VF card */
-  .flows-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.5rem; }
-  .flow-card { background: var(--surface2); border-radius: 8px; padding: 1.1rem; border: 1px solid var(--border); }
-  .flow-title { font-size: 12px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.6rem; }
-  .flow-steps { list-style: none; counter-reset: step; }
-  .flow-steps li { font-size: 12px; color: var(--muted); padding: 3px 0 3px 1.6rem; position: relative; counter-increment: step; line-height: 1.45; }
-  .flow-steps li::before { content: counter(step); position: absolute; left: 0; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--accent2); font-weight: 700; background: rgba(63,185,80,0.12); width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; top: 4px; }
+## Experience
 
-  /* demo links */
-  .demo-section { background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem 1.25rem; }
-  .demo-section h4 { font-size: 13px; font-weight: 700; margin-bottom: 0.65rem; color: var(--text); }
-  .demo-links { display: flex; flex-wrap: wrap; gap: 0.45rem; }
-  .demo-link { font-size: 12px; text-decoration: none; padding: 6px 12px; border-radius: 6px; font-weight: 600; transition: opacity 0.2s; display: flex; align-items: center; gap: 5px; }
-  .demo-link:hover { opacity: 0.8; }
-  .demo-main    { background: #ff0000; color: #fff; }
-  .demo-channel { background: var(--surface); color: var(--text); border: 1px solid var(--border2); }
-  .demo-flow    { background: linear-gradient(135deg, var(--accent), var(--accent4)); color: #000; font-weight: 800; }
+### 🔬 AI/ML Intern — AI Autopilot · QNu Labs *(May 2026 – Present · Remote)*
+> Quantum Cybersecurity vendor for Indian Army & Navy · Bengaluru
 
-  @media (max-width: 760px) {
-    .projects-grid { grid-template-columns: 1fr; }
-    .flows-grid    { grid-template-columns: 1fr; }
-  }
+**Stack:** `FastAPI` `LangChain` `Ollama` `Mistral LLM` `scikit-learn` `Prophet` `InfluxDB` `React` `ReportLab`
 
-  /* ── ACHIEVEMENTS ── */
-  .ach-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
-  .ach-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; display: flex; align-items: flex-start; gap: 1rem; transition: border-color 0.2s; }
-  .ach-card:hover { border-color: var(--yellow); }
-  .ach-icon { font-size: 1.4rem; flex-shrink: 0; width: 42px; height: 42px; background: rgba(227,179,65,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
-  .ach-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
-  .ach-desc  { font-size: 12px; color: var(--muted); line-height: 1.5; }
+- Building AI Autopilot for live QKDN deployed with Indian Army & Navy across 3+ active network nodes — LLM copilot agent reducing manual provisioning effort by ~60% via LangChain + Ollama
+- IsolationForest anomaly detection on QBER/SKR quantum key distribution network streams with automated alerting
+- Automated PDF reporting pipeline with FastAPI + React dashboard for real-time network analytics
 
-  /* ── CERTIFICATIONS ── */
-  .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
-  .cert-card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 10px; padding: 1.2rem 1.4rem;
-    display: flex; align-items: flex-start; gap: 1rem;
-    transition: border-color 0.2s, transform 0.2s;
-    position: relative; overflow: hidden;
-  }
-  .cert-card::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, var(--accent), var(--accent4)); }
-  .cert-card:hover { border-color: rgba(88,166,255,0.4); transform: translateY(-1px); }
-  .cert-icon { font-size: 1.4rem; flex-shrink: 0; }
-  .cert-name   { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
-  .cert-issuer { font-size: 11px; color: var(--accent); font-weight: 600; margin-bottom: 3px; }
-  .cert-desc   { font-size: 11px; color: var(--muted); line-height: 1.45; }
-  .cert-link   { font-size: 11px; color: var(--accent2); text-decoration: none; font-weight: 600; margin-top: 4px; display: inline-block; }
-  .cert-link:hover { text-decoration: underline; }
+---
 
-  /* ── FOOTER ── */
-  footer { border-top: 1px solid var(--border); padding: 2.5rem 2rem; text-align: center; }
-  .footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
-  .footer-link { color: var(--muted); text-decoration: none; font-size: 13px; transition: color 0.2s; display: flex; align-items: center; gap: 5px; }
-  .footer-link:hover { color: var(--accent); }
-  .footer-copy { font-size: 12px; color: var(--muted); }
+### 🗺️ Project Intern — Geospatial AI for NHAI · IIIT Nagpur *(Mar 2026 – May 2026 · Remote)*
+> Under Dr. Neha Kasture
 
-  /* ── ANIMATIONS ── */
-  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
+**Stack:** `Python` `Streamlit` `OpenCV` `KML/KMZ` `Geospatial Analysis` `Folium` `openpyxl`
 
-  /* ── RESPONSIVE ── */
-  @media (max-width: 768px) {
-    nav { padding: 0 1rem; }
-    .nav-links { display: none; }
-    section { padding: 3.5rem 1.25rem; }
-    .hero-stats { gap: 0; }
-    .stat { padding: 0.5rem 1rem 0.5rem 0; margin-right: 1rem; }
-    .stat-num { font-size: 1.3rem; }
-  }
-  @media (max-width: 480px) {
-    .hero-stats { flex-direction: column; gap: 0.75rem; }
-    .stat { border-right: none; padding: 0; margin: 0; }
-    .hero-btns { flex-direction: column; }
-    .btn-primary, .btn-secondary { justify-content: center; }
-  }
-</style>
-</head>
-<body>
+- Developed automated geospatial road-marking system for NHAI — KML pipeline with road curvature detection and geodesic heading computation for real-world polygon creation on curved roads
+- Built production-ready Streamlit web app with map visualization and automated KML/Excel reporting delivered to PWD/NHAI government clients
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">aryan-patel.dev</div>
-  <ul class="nav-links">
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#achievements">Achievements</a></li>
-    <li><a href="#certifications">Certs</a></li>
-  </ul>
-  <a class="nav-cta" href="mailto:patelaryan77462@gmail.com">Hire Me</a>
-</nav>
+---
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
-    <div class="hero-eyebrow">B.Tech CSE · IIIT Manipur · Expected 2027 · Open to SDE / AI / MLOps Roles</div>
-    <h1><span class="name">Aryan Patel</span></h1>
-    <p class="hero-tagline">
-      Solo Founder @ <span class="hl">VelocityFly AI</span> &nbsp;·&nbsp;
-      <span class="hl2">AI/ML &amp; Full-Stack Engineer</span> &nbsp;·&nbsp;
-      <span class="hl3">MLOps · LLMOps · RAG · FastAPI</span> &nbsp;·&nbsp;
-      <span class="hl4">AWS · Docker · React · AI Automation</span>
-    </p>
-    <p class="hero-desc">
-      Solo Founder of <strong>VelocityFly AI</strong> — a live AI SaaS that has automated <strong>600+ YouTube Shorts</strong>, generated <strong>70K+ organic views</strong>, and driven <strong>140+ affiliate clicks</strong> with zero paid promotion. Building production AI systems end-to-end: MLOps pipelines on <strong>AWS EKS</strong> with DVC + MLflow, LLM-powered automation with FastAPI + Mistral, and full-stack React dashboards. <strong>Top 1%</strong> in Amazon ML Challenge among 183,000+ participants.
-    </p>
-    <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num">1,650<span>+</span></div>
-        <div class="stat-label">GitHub Commits</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">70K<span>+</span></div>
-        <div class="stat-label">Organic YT Views</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">140<span>+</span></div>
-        <div class="stat-label">Affiliate Clicks · No Ads</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">600<span>+</span></div>
-        <div class="stat-label">Shorts Automated</div>
-      </div>
+### 🔭 AI Research Intern · IISER Bhopal — Dept of Data Science *(2 months · Remote)*
 
-              <div class="stat">
-        <div class="stat-num">10</div>
-        <div class="stat-label">Live Users</div>
-      </div>
+**Stack:** `Python` `ML Research` `Data Science`
 
-      <div class="stat">
-        <div class="stat-num">Top 1<span>%</span></div>
-        <div class="stat-label">Amazon ML · 183K+</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">4</div>
-        <div class="stat-label">Production Systems Live</div>
-      </div>
+- AI/ML research direction, data science methodology & experimentation under faculty guidance
+- Contributed to academic ML research with experimentation and analysis pipelines
 
- 
-      
-    </div>
-    <div class="hero-btns">
-      <a class="btn-primary" href="https://github.com/aryan-Patel-web" target="_blank">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-        GitHub →
-      </a>
-      <a class="btn-secondary" href="https://www.linkedin.com/in/aryan-patel-97396524b/" target="_blank">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        LinkedIn
-      </a>
-      <a class="btn-secondary" href="https://velocityfly.com" target="_blank">🚀 VelocityFly.com ↗</a>
+---
 
-      <a class="btn-secondary" href="https://drive.google.com/file/d/19f70uialc6PYCukJg5cgMQhgotIv27bj/view?usp=drivesdk" target="_blank">🚀 Resume ↗</a>
-    </div>
+### 🚀 AI Full-Stack Engineer & Founder · VelocityFly AI *(Sep 2025 – Present · Solo)*
+> [velocityfly.com](https://velocityfly.com)
 
+**Stack:** `FastAPI` `React` `MongoDB Atlas` `Mistral LLM` `ElevenLabs TTS` `FFmpeg` `Google OAuth 2.0` `Stable Diffusion` `Render`
 
-  </div>
+| Traction | |
+|---|---|
+| Total Organic Views | **70K+** |
+| Reels Auto-Published | **600+** |
+| Affiliate Clicks (0 Paid Ads) | **140+** |
+| Active Live Users | **10** |
+| YT Channels Automated | **3** |
 
+**User Type 1 — Has a Video:**
+1. Upload existing video to VelocityFly
+2. AI generates title, description, hashtags, thumbnail
+3. Select Amazon or Flipkart + product category
+4. App fetches product via official API (image, price, URL)
+5. Builds affiliate URL from stored ID (set once, saved in DB)
+6. Auto-uploads to YouTube with AI content + affiliate link embedded
 
-</section>
+**User Type 2 — No Video Yet:**
+1. Enter product category (earbuds, laptop, skincare…)
+2. Select Amazon / Flipkart + price filter
+3. App fetches product images, title, price via API
+4. Auto-creates promo slideshow video with price overlays
+5. Embeds affiliate URL from stored ID in description
+6. Auto-uploads YouTube Short on scheduled times — fully hands-free
 
-<hr class="section-divider" />
+**Key Features:** AI comment auto-reply · Live thumbnail updater · Multi-language TTS (Hindi, Hinglish, Tamil, Telugu, Bengali) · Analytics dashboard (last 28 days) · Image-to-video pipeline · AI thumbnail studio (3 styles/video)
 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="container fade-in">
-    <div class="section-label">Technical Stack</div>
-    <h2 class="section-title">Skills</h2>
-    <div class="skills-grid">
+**🚀 Expanding to Multi-Platform** — one affiliate URL auto-published across YouTube → Instagram → Facebook → WhatsApp → Reddit simultaneously.
 
-      <div class="skill-card sk-ai">
-        <div class="skill-card-title">⚙️ AI / Machine Learning</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Scikit-learn</span><span class="skill-tag">XGBoost</span>
-          <span class="skill-tag">TensorFlow</span><span class="skill-tag">PyTorch</span>
-          <span class="skill-tag">NLP</span><span class="skill-tag">Deep Learning</span>
-          <span class="skill-tag">Feature Engineering</span><span class="skill-tag">EDA</span>
-          <span class="skill-tag">Ensemble Methods</span><span class="skill-tag">LSTM</span>
-          <span class="skill-tag">ANN</span>
-        </div>
-      </div>
+> 🎬 [Full Platform Demo](https://www.youtube.com/watch?v=4ekTDazr1xg) · [Affiliate Video Demo](https://youtube.com/shorts/gWOB0PWRI2A) · [Image-to-Video Demo](https://youtube.com/shorts/oaIXvEHIUXE)
 
-      <div class="skill-card sk-mlops">
-        <div class="skill-card-title">☸️ MLOps &amp; Cloud</div>
-        <div class="skill-tags">
-          <span class="skill-tag">DVC</span><span class="skill-tag">MLflow</span>
-          <span class="skill-tag">DagsHub</span><span class="skill-tag">Docker</span>
-          <span class="skill-tag">Kubernetes</span><span class="skill-tag">AWS EKS</span>
-          <span class="skill-tag">AWS EC2</span><span class="skill-tag">AWS ECR</span>
-          <span class="skill-tag">AWS S3</span><span class="skill-tag">GitHub Actions</span>
-          <span class="skill-tag">CI/CD</span><span class="skill-tag">Prometheus</span>
-          <span class="skill-tag">Grafana</span>
-        </div>
-      </div>
+---
 
-      <div class="skill-card sk-genai">
-        <div class="skill-card-title">🧠 GenAI &amp; LLMOps</div>
-        <div class="skill-tags">
-          <span class="skill-tag">LangChain</span><span class="skill-tag">LangGraph</span>
-          <span class="skill-tag">CrewAI</span><span class="skill-tag">RAG</span>
-          <span class="skill-tag">Prompt Engineering</span><span class="skill-tag">Mistral</span>
-          <span class="skill-tag">Groq</span><span class="skill-tag">Ollama</span>
-          <span class="skill-tag">ChromaDB</span><span class="skill-tag">FAISS</span>
-          <span class="skill-tag">ElevenLabs</span><span class="skill-tag">AI Agents</span>
-        </div>
-      </div>
+## Projects
 
-      <div class="skill-card sk-fs">
-        <div class="skill-card-title">🌐 Full-Stack</div>
-        <div class="skill-tags">
-          <span class="skill-tag">React</span><span class="skill-tag">Vite</span>
-          <span class="skill-tag">Tailwind CSS</span><span class="skill-tag">FastAPI</span>
-          <span class="skill-tag">Node.js</span><span class="skill-tag">Express.js</span>
-          <span class="skill-tag">Flask</span><span class="skill-tag">REST APIs</span>
-          <span class="skill-tag">JWT</span><span class="skill-tag">WebSockets</span>
-          <span class="skill-tag">Next.js</span>
-        </div>
-      </div>
+### 🟢 MLOps Vehicle Insurance Prediction Pipeline
+> End-to-end production ML pipeline on 381,109 records — from MongoDB Atlas to live AWS EC2 inference API with full CI/CD.
 
-      <div class="skill-card sk-db" style="grid-column: span 2;">
-        <div class="skill-card-title">🗄️ Databases &amp; Tools</div>
-        <div class="skill-tags">
-          <span class="skill-tag">MongoDB Atlas</span><span class="skill-tag">PostgreSQL</span>
-          <span class="skill-tag">InfluxDB</span><span class="skill-tag">Redis</span>
-          <span class="skill-tag">FFmpeg</span><span class="skill-tag">OpenCV</span>
-          <span class="skill-tag">Git</span><span class="skill-tag">Linux</span>
-          <span class="skill-tag">Streamlit</span><span class="skill-tag">BullMQ</span>
-          <span class="skill-tag">Postman</span><span class="skill-tag">Jupyter</span>
-        </div>
-      </div>
+```
+MongoDB → ETL → Validation → Feature Eng
+→ XGBoost Training → Eval Gate (Δ>0.02)
+→ S3 Registry → Docker → ECR → EC2 LIVE
+```
 
-    </div>
-  </div>
-</section>
+- **93.09% F1-score** · 88.13% precision · 98.64% recall
+- Model promotion gate: only promotes if new model beats S3 baseline by >0.02
+- Zero-touch CI/CD: Git push → Docker → ECR → EC2 → Live
+- FastAPI REST (/train, /predict), custom logger, timestamped artifacts
 
-<hr class="section-divider" />
+**Stack:** `XGBoost` `FastAPI` `MongoDB` `Docker` `AWS EC2/ECR/S3` `GitHub Actions`
 
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="container fade-in">
-    <div class="section-label">Work History</div>
-    <h2 class="section-title">Experience</h2>
-    <div class="exp-list">
+[![GitHub](https://img.shields.io/badge/GitHub-Repo-181717?style=flat&logo=github)](https://github.com/aryan-Patel-web/MLOPS-Vehicle-Insurance-MAJOR-PROJECT1)
+[![Live](https://img.shields.io/badge/Live-Demo-4CAF50?style=flat)](http://3.237.0.238:5000)
 
-      <!-- QNu Labs -->
-      <div class="exp-card featured">
-        <div class="exp-header">
-          <div>
-            <div class="exp-role">AI/ML Intern — AI Autopilot</div>
-            <div class="exp-company">QNu Labs — Quantum Cybersecurity (Indian Army &amp; Navy Vendor) · Bengaluru</div>
-          </div>
-          <div class="exp-duration">May 2026 – Present · 2 months · Remote</div>
-        </div>
-        <div class="exp-stack">
-          <span class="exp-tag">FastAPI</span><span class="exp-tag">LangChain</span><span class="exp-tag">Ollama</span>
-          <span class="exp-tag">Mistral LLM</span><span class="exp-tag">scikit-learn</span><span class="exp-tag">Prophet</span>
-          <span class="exp-tag">InfluxDB</span><span class="exp-tag">React</span><span class="exp-tag">ReportLab</span>
-        </div>
-        <ul class="exp-bullets">
-          <li>Building AI Autopilot for live QKDN deployed with Indian Army &amp; Navy across 3+ active network nodes — LLM copilot agent reducing manual provisioning effort by ~60% via LangChain + Ollama</li>
-          <li>IsolationForest anomaly detection on QBER/SKR quantum key distribution network streams with automated alerting</li>
-          <li>Automated PDF reporting pipeline with FastAPI + React dashboard for real-time network analytics</li>
-        </ul>
-      </div>
+---
 
-      <!-- IIIT Nagpur -->
-      <div class="exp-card">
-        <div class="exp-header">
-          <div>
-            <div class="exp-role">Project Intern — Geospatial AI for NHAI</div>
-            <div class="exp-company">IIIT Nagpur — Under Dr. Neha Kasture</div>
-          </div>
-          <div class="exp-duration">March 2026 – May 2026 · 2 months · Remote</div>
-        </div>
-        <div class="exp-stack">
-          <span class="exp-tag">Python</span><span class="exp-tag">Streamlit</span><span class="exp-tag">OpenCV</span>
-          <span class="exp-tag">KML/KMZ</span><span class="exp-tag">Geospatial Analysis</span><span class="exp-tag">Folium</span><span class="exp-tag">openpyxl</span>
-        </div>
-        <ul class="exp-bullets">
-          <li>Developed automated geospatial road-marking system for NHAI — KML pipeline with road curvature detection and geodesic heading computation for real-world polygon creation on curved roads</li>
-          <li>Built production-ready Streamlit web app with map visualization and automated KML/Excel reporting delivered to PWD/NHAI government clients</li>
-        </ul>
-      </div>
+### 🟢 Production Sentiment Analysis — End-to-End MLOps
+> Most complete MLOps project: NLP pipeline → DVC → MLflow → Kubernetes EKS → Prometheus + Grafana real-time monitoring.
 
-            <div class="exp-card">
-        <div class="exp-header">
-          <div>
-            <div class="exp-role">AI Research Intern</div>
-            <div class="exp-company">IISER Bhopal — Dept of Data Science</div>
-          </div>
-          <div class="exp-duration">2 months · Remote</div>
-        </div>
-        <div class="exp-stack">
-          <span class="exp-tag">Python</span><span class="exp-tag">ML Research</span><span class="exp-tag">Data Science</span>
-        </div>
-        <ul class="exp-bullets">
-          <li>AI/ML research direction, data science methodology &amp; experimentation under faculty guidance</li>
-          <li>Contributed to academic ML research with experimentation and analysis pipelines</li>
-        </ul>
-      </div>
-
-      <!-- VelocityFly -->
-      <div class="exp-card featured">
-        <div class="exp-header">
-          <div>
-            <div class="exp-role">AI Full-Stack Engineer &amp; Founder</div>
-            <div class="exp-company">VelocityFly AI — AI YouTube Automation &amp; Affiliate SaaS · <a href="https://velocityfly.com" target="_blank" style="color:var(--accent);text-decoration:none;">velocityfly.com ↗</a></div>
-          </div>
-          <div class="exp-duration">Sep 2025 – Present · 8 months · Solo</div>
-        </div>
-        <div class="exp-stack">
-          <span class="exp-tag">FastAPI</span><span class="exp-tag">React</span><span class="exp-tag">MongoDB Atlas</span>
-          <span class="exp-tag">Mistral LLM</span><span class="exp-tag">ElevenLabs TTS</span><span class="exp-tag">FFmpeg</span>
-          <span class="exp-tag">Google OAuth 2.0</span><span class="exp-tag">Stable Diffusion</span><span class="exp-tag">Render</span>
-        </div>
-        <div class="traction-banner">
-          <div class="traction-item"><div class="traction-num">70K+</div><div class="traction-label">Total Organic Views</div></div>
-          <div class="traction-item"><div class="traction-num">600+</div><div class="traction-label">Reels Auto-Published</div></div>
-          <div class="traction-item"><div class="traction-num">140+</div><div class="traction-label">Affiliate Clicks · 0 Paid Ads</div></div>
-          <div class="traction-item"><div class="traction-num">10</div><div class="traction-label">Active Live Users</div></div>
-          <div class="traction-item"><div class="traction-num">3</div><div class="traction-label">YT Channels Automated</div></div>
-        </div>
-
-        <div style="font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:0.07em;margin:0.25rem 0 0.4rem;">
-          🚀 Expanding to Multi-Platform — One Affiliate URL, Every Platform
-        </div>
-
-           <div style="font-size:14px;color:var(--muted);font-weight:800;text-transform:uppercase;letter-spacing:0.07em;margin:0.25rem 0 0.4rem;">
-          🚀Demo Affiliate URL With Affiliate ID (velocityfly-21) --<a href="https://www.amazon.in/s?k=Titan+watch&tag=velocityfly-21" target="_blank">DEMO velocityfly-21</a>
-        </div>
-
-        <div class="platform-row">
-          <a class="plat-pill plat-yt"  href="https://velocityfly.com/youtube"            target="_blank">▶ YouTube 100% Live</a>
-          <a class="plat-pill plat-ig"  href="https://velocityfly.com/instagram"           target="_blank">📸 Instagram Under Devlopment</a>
-          <a class="plat-pill plat-fb"  href="https://velocityfly.com/facebook-instagram"  target="_blank">📘 Facebook Under Devlopment</a>
-          <a class="plat-pill plat-wa"  href="https://velocityfly.com/whatsapp"            target="_blank">💬 WhatsApp Under Devlopment</a>
-          <a class="plat-pill plat-rd"  href="https://velocityfly.com/reddit-auto"         target="_blank">🔴 Reddit Under Devlopment</a>
-          <span class="plat-pill" style="background:rgba(10,102,194,0.12);color:#4da6f5;border:1px solid rgba(10,102,194,0.3);">🔗 LinkedIn <span style="font-size:9px;opacity:0.7;">(soon)</span></span>
-        </div>
-
-        <ul class="exp-bullets">
-          <li>Built and deployed production-grade AI SaaS — YouTube content generation, publishing, engagement, and affiliate monetization using FastAPI microservices + LLM pipelines</li>
-          <li>Two-flow affiliate engine: User Type 1 uploads video → AI wraps with affiliate link &amp; auto-uploads; User Type 2 (no video) → platform auto-creates promo slideshow from Amazon/Flipkart product images and uploads as YouTube Short on schedule</li>
-          <li>Sub-3s latency, AI comment auto-reply, live thumbnail updater, analytics dashboard (last 28 days views/likes/subs/per-video), multi-language TTS (Hindi/Hinglish/Tamil/Telugu/Bengali), 3 OAuth channels connected</li>
-          <li>Expanding to publish one affiliate URL across YouTube, Instagram, Facebook, WhatsApp, Reddit simultaneously — creator sets ID once, platform handles all platforms forever</li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<hr class="section-divider" />
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="container fade-in">
-    <div class="section-label">Selected Work</div>
-    <h2 class="section-title">Projects</h2>
-    <div class="projects-grid">
-
-      <!-- Vehicle Insurance MLOps -->
-      <div class="proj-card mlops-card">
-        <span class="proj-badge badge-mlops">MLOps · Major Project</span>
-        <div class="proj-title">MLOps Vehicle Insurance Prediction Pipeline</div>
-        <div class="proj-desc">End-to-end production ML pipeline on 381,109 records — from MongoDB Atlas to live AWS EC2 inference API with full CI/CD.</div>
-        <div class="pipeline"><span class="hl">MongoDB</span> → ETL → Validation → Feature Eng
-→ XGBoost Training → <span class="hl2">Eval Gate (Δ&gt;0.02)</span>
-→ S3 Registry → Docker → ECR → <span class="hl">EC2 LIVE</span></div>
-        <ul class="proj-highlights">
-          <li>93.09% F1-score · 88.13% precision · 98.64% recall</li>
-          <li>Model promotion gate: only promotes if new model beats S3 baseline by &gt;0.02</li>
-          <li>Zero-touch CI/CD: Git push → Docker → ECR → EC2 → Live</li>
-          <li>FastAPI REST (/train, /predict), custom logger, timestamped artifacts</li>
-        </ul>
-        <div class="proj-stack">
-          <span class="proj-tech">XGBoost</span><span class="proj-tech">FastAPI</span><span class="proj-tech">MongoDB</span>
-          <span class="proj-tech">Docker</span><span class="proj-tech">AWS EC2/ECR/S3</span><span class="proj-tech">GitHub Actions</span>
-        </div>
-        <div class="proj-links">
-          <a class="proj-link" href="https://github.com/aryan-Patel-web/MLOPS-Vehicle-Insurance-MAJOR-PROJECT1" target="_blank">GitHub ↗</a>
-          <a class="proj-link green" href="http://3.237.0.238:5000" target="_blank">Live Demo ↗</a>
-        </div>
-      </div>
-
-      <!-- Sentiment MLOps -->
-      <div class="proj-card mlops-card">
-        <span class="proj-badge badge-mlops">MLOps · EKS + Monitoring</span>
-        <div class="proj-title">Production Sentiment Analysis — End-to-End MLOps</div>
-        <div class="proj-desc">Most complete MLOps project: NLP pipeline → DVC → MLflow → Kubernetes EKS → Prometheus + Grafana real-time monitoring.</div>
-        <div class="pipeline"><span class="hl">DVC Pipeline</span> → MLflow Registry
+```
+DVC Pipeline → MLflow Registry
 → GitHub Actions: pytest → Docker → ECR
-→ <span class="hl2">AWS EKS (Kubernetes)</span> → LoadBalancer
-→ Prometheus → <span class="hl">Grafana Dashboards</span></div>
-        <ul class="proj-highlights">
-          <li>6-stage DVC workflow, MLflow: None → Staging → Production lifecycle</li>
-          <li>Prometheus scrapes /metrics every 15s — req rate, p95 latency, errors</li>
-          <li>15-step CI/CD pipeline with zero-downtime rolling deployments</li>
-          <li>K8s Secrets, PVC storage, CloudFormation-managed EKS nodegroups</li>
-        </ul>
-        <div class="proj-stack">
-          <span class="proj-tech">DVC</span><span class="proj-tech">MLflow</span><span class="proj-tech">Flask</span>
-          <span class="proj-tech">AWS EKS</span><span class="proj-tech">Kubernetes</span><span class="proj-tech">Prometheus</span><span class="proj-tech">Grafana</span>
-        </div>
-        <div class="proj-links">
-          <a class="proj-link" href="https://github.com/aryan-Patel-web/production-sentiment-analysis-end-to-end-mlops" target="_blank">GitHub ↗</a>
-        </div>
-      </div>
+→ AWS EKS (Kubernetes) → LoadBalancer
+→ Prometheus → Grafana Dashboards
+```
 
-      <!-- VelocityFly — FULL WIDTH -->
-      <div class="proj-card ai-card full-width">
-        <span class="proj-badge badge-ai">AI Full-Stack · Startup · Live · Multi-Platform</span>
-        <div class="proj-title">VelocityFly AI — YouTube Automation &amp; Affiliate Monetization SaaS</div>
-        <div class="proj-desc">India's first platform combining AI content automation + affiliate monetization. Two complete user flows, multi-platform publishing pipeline, analytics dashboard, and 70K+ organic views with 140+ affiliate clicks — zero paid promotion.</div>
+- 6-stage DVC workflow, MLflow: None → Staging → Production lifecycle
+- Prometheus scrapes /metrics every 15s — req rate, p95 latency, errors
+- 15-step CI/CD pipeline with zero-downtime rolling deployments
+- K8s Secrets, PVC storage, CloudFormation-managed EKS nodegroups
 
-        <div class="flows-grid">
-          <div class="flow-card">
-            <div class="flow-title">🎥 User Type 1 — Has a Video</div>
-            <ol class="flow-steps">
-              <li>Upload existing video to VelocityFly</li>
-              <li>AI generates title, description, hashtags, thumbnail</li>
-              <li>Select Amazon or Flipkart + product category</li>
-              <li>App fetches product via official API (image, price, URL)</li>
-              <li>Builds affiliate URL from stored ID (set once, saved in DB)</li>
-              <li>Auto-uploads to YouTube with AI content + affiliate link embedded</li>
-            </ol>
-          </div>
-          <div class="flow-card">
-            <div class="flow-title">🚀 User Type 2 — No Video Yet</div>
-            <ol class="flow-steps">
-              <li>Enter product category (earbuds, laptop, skincare…)</li>
-              <li>Select Amazon / Flipkart + price filter</li>
-              <li>App fetches product images, title, price via API</li>
-              <li>Auto-creates promo slideshow video with price overlays</li>
-              <li>Embeds affiliate URL from stored ID in description</li>
-              <li>Auto-uploads YouTube Short on scheduled times — fully hands-free</li>
-            </ol>
-          </div>
-        </div>
+**Stack:** `DVC` `MLflow` `Flask` `AWS EKS` `Kubernetes` `Prometheus` `Grafana`
 
-        <ul class="proj-highlights">
-          <li>AI comment auto-reply · Live thumbnail updater · Multi-language TTS (Hindi, Hinglish, Tamil, Telugu, Bengali)</li>
-          <li>Analytics dashboard: last 28 days views, likes, subscribers, per-video performance</li>
-          <li>Image-to-video pipeline · Pixabay keyword → scheduled daily auto-uploads · AI thumbnail studio (3 styles/video)</li>
-          <li>Multi-platform expansion: same affiliate URL auto-published to YouTube → Instagram → Facebook → WhatsApp → Reddit simultaneously</li>
-        </ul>
+[![GitHub](https://img.shields.io/badge/GitHub-Repo-181717?style=flat&logo=github)](https://github.com/aryan-Patel-web/production-sentiment-analysis-end-to-end-mlops)
 
-        <div class="demo-section">
-          <h4>🎬 Demo Videos &amp; Live Channels</h4>
-          <div class="demo-links">
-            <a class="demo-link demo-flow" href="https://www.youtube.com/watch?v=4ekTDazr1xg" target="_blank">▶ Full Platform Demo</a>
-            <a class="demo-link demo-main" href="https://youtube.com/shorts/gWOB0PWRI2A" target="_blank">▶ Affiliate Video Demo</a>
-            <a class="demo-link demo-main" href="https://youtube.com/shorts/oaIXvEHIUXE" target="_blank">▶ Image-to-Video Demo</a>
-            <a class="demo-link demo-channel" href="https://www.youtube.com/@IIIT_Testing/shorts" target="_blank">📺 Channel 1 (AI Testing)</a>
-            <a class="demo-link demo-channel" href="https://www.youtube.com/@RandomLuxuryFacts/posts" target="_blank">📺 Channel 2 (Luxury Facts)</a>
-            <a class="demo-link demo-channel" href="https://velocityfly.com" target="_blank">🌐 Live Platform</a>
-          </div>
-        </div>
+---
 
-        <div class="proj-stack">
-          <span class="proj-tech">FastAPI</span><span class="proj-tech">React</span><span class="proj-tech">MongoDB</span>
-          <span class="proj-tech">Mistral LLM</span><span class="proj-tech">ElevenLabs</span><span class="proj-tech">FFmpeg</span>
-          <span class="proj-tech">Together AI FLUX</span><span class="proj-tech">Google OAuth</span><span class="proj-tech">YouTube Data API</span>
-        </div>
-        <div class="proj-links">
-          <a class="proj-link" href="https://github.com/aryan-Patel-web/Velocityfly.com" target="_blank">GitHub ↗</a>
-          <a class="proj-link green" href="https://velocityfly.com" target="_blank">Live ↗</a>
-        </div>
-      </div>
+### 🔵 VelocityFly AI — YouTube Automation & Affiliate Monetization SaaS
+> India's first platform combining AI content automation + affiliate monetization. 70K+ organic views · 140+ affiliate clicks · Zero paid ads.
 
-      <!-- VedaAI -->
-      <div class="proj-card fs-card">
-        <span class="proj-badge badge-fullstack">Full-Stack · AI</span>
-        <div class="proj-title">VedaAI — AI Assignment Generation Platform</div>
-        <div class="proj-desc">Queue-based AI assignment generation with BullMQ job processing, PDF delivery via email, full deployment on Render.</div>
-        <ul class="proj-highlights">
-          <li>BullMQ queue for async AI task processing with Mistral API</li>
-          <li>PDF generation via Puppeteer, SMTP email delivery</li>
-          <li>MongoDB Atlas + Redis, deployed on Render with full CI</li>
-        </ul>
-        <div class="proj-stack">
-          <span class="proj-tech">Next.js</span><span class="proj-tech">Node.js</span><span class="proj-tech">BullMQ</span>
-          <span class="proj-tech">Mistral API</span><span class="proj-tech">Redis</span><span class="proj-tech">Puppeteer</span>
-        </div>
-        <div class="proj-links">
-          <a class="proj-link" href="https://github.com/aryan-Patel-web/Veda_AI_Task" target="_blank">GitHub ↗</a>
-        </div>
-      </div>
+**Stack:** `FastAPI` `React` `MongoDB` `Mistral LLM` `ElevenLabs` `FFmpeg` `Together AI FLUX` `Google OAuth` `YouTube Data API`
 
-      <!-- FloatChat AI -->
-      <div class="proj-card genai-card">
-        <span class="proj-badge badge-genai">GenAI · Hackathon · Team Lead</span>
-        <div class="proj-title">FloatChat AI — Ocean Intelligence Assistant</div>
-        <div class="proj-desc">RAG-based multimodal chatbot over 50TB+ ARGO ocean float datasets. Built at Nextwave GenAI Hackathon (48-hour, Noida) as Team Lead.</div>
-        <ul class="proj-highlights">
-          <li>90% answer parity to ChatGPT, hallucination reduction via retrieval verification + cross-check agents</li>
-          <li>Latency &lt;2s, fallback LLM strategy — multi-agent: retrieval → verifier → cross-checker → responder</li>
-        </ul>
-        <div class="proj-stack">
-          <span class="proj-tech">Python</span><span class="proj-tech">RAG</span><span class="proj-tech">ChromaDB</span>
-          <span class="proj-tech">LangChain</span><span class="proj-tech">LangGraph</span><span class="proj-tech">Groq</span>
-        </div>
-        <div class="proj-links">
-          <a class="proj-link" href="https://github.com/aryan-Patel-web/FloatChat_AI" target="_blank">GitHub ↗</a>
-        </div>
-      </div>
+[![GitHub](https://img.shields.io/badge/GitHub-Repo-181717?style=flat&logo=github)](https://github.com/aryan-Patel-web/Velocityfly.com)
+[![Live](https://img.shields.io/badge/Live-velocityfly.com-FF6B35?style=flat)](https://velocityfly.com)
 
-      <!-- PitchGroww -->
-      <div class="proj-card genai-card">
-        <span class="proj-badge badge-genai">GenAI · Multi-Agent</span>
-        <div class="proj-title">PitchGroww-AI — Startup Pitch Analyzer</div>
-        <div class="proj-desc">Multi-agent pipeline that analyzes, rewrites, and delivers investor-ready pitch decks with agentic email + WhatsApp automation.</div>
-        <ul class="proj-highlights">
-          <li>3-agent pipeline: analyzer → domain advisor → stylist</li>
-          <li>Auto-generates investor-ready PDFs, delivers via Email + WhatsApp</li>
-        </ul>
-        <div class="proj-stack">
-          <span class="proj-tech">Python</span><span class="proj-tech">CrewAI</span><span class="proj-tech">LangChain</span>
-          <span class="proj-tech">LangGraph</span><span class="proj-tech">PDF Gen</span>
-        </div>
-        <div class="proj-links">
-          <a class="proj-link" href="https://github.com/aryan-Patel-web" target="_blank">GitHub ↗</a>
-        </div>
-      </div>
+---
 
-    </div>
-  </div>
-</section>
+### 🟡 VedaAI — AI Assignment Generation Platform
+> Queue-based AI assignment generation with BullMQ job processing, PDF delivery via email, full deployment on Render.
 
-<hr class="section-divider" />
+- BullMQ queue for async AI task processing with Mistral API
+- PDF generation via Puppeteer, SMTP email delivery
+- MongoDB Atlas + Redis, deployed on Render with full CI
 
-<!-- ACHIEVEMENTS -->
-<section id="achievements">
-  <div class="container fade-in">
-    <div class="section-label">Recognition</div>
-    <h2 class="section-title">Achievements</h2>
-    <div class="ach-grid">
-      <div class="ach-card">
-        <div class="ach-icon">🏆</div>
-        <div>
-          <div class="ach-title">Amazon ML Challenge 2025 — Top 1%</div>
-          <div class="ach-desc">Top 1% among 183,000+ participants. ML-based product attribute extraction with multimodal pipeline (text + image).</div>
-        </div>
-      </div>
-      <div class="ach-card">
-        <div class="ach-icon">🥇</div>
-        <div>
-          <div class="ach-title">Bajaj HackRx 2025 — Rank 88</div>
-          <div class="ach-desc">National GenAI Hackathon. Production-grade RAG system. Score: 694 out of competing teams.</div>
-        </div>
-      </div>
-      <div class="ach-card">
-        <div class="ach-icon">⚡</div>
-        <div>
-          <div class="ach-title">Nextwave GenAI Hackathon — Team Lead</div>
-          <div class="ach-desc">Selected as Team Lead at 48-hour GenAI Hackathon, Noida. Built FloatChat AI over 50TB+ ARGO ocean datasets.</div>
-        </div>
-      </div>
-      <div class="ach-card">
-        <div class="ach-icon">💻</div>
-        <div>
-          <div class="ach-title">1,650+ GitHub Commits</div>
-          <div class="ach-desc">Sustained engineering output across ML, MLOps, Full-Stack, and GenAI projects over 12 months.</div>
-        </div>
-      </div>
-      <div class="ach-card">
-        <div class="ach-icon">🚀</div>
-        <div>
-          <div class="ach-title">Solo Founder — VelocityFly AI</div>
-          <div class="ach-desc">Live AI SaaS across 3 YouTube channels — 70K+ views, 600+ auto-published shorts, 140+ affiliate clicks with zero paid ads.</div>
-        </div>
-      </div>
-      <div class="ach-card">
-        <div class="ach-icon">🔬</div>
-        <div>
-          <div class="ach-title">2 Research &amp; AI Internships</div>
-          <div class="ach-desc">AI Autopilot Intern @ QNu Labs (Indian Army/Navy QKDN) · Project Intern @ IIIT Nagpur (Geospatial AI for NHAI polygon creation).</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+**Stack:** `Next.js` `Node.js` `BullMQ` `Mistral API` `Redis` `Puppeteer`
 
-<hr class="section-divider" />
+[![GitHub](https://img.shields.io/badge/GitHub-Repo-181717?style=flat&logo=github)](https://github.com/aryan-Patel-web/Veda_AI_Task)
 
-<!-- CERTIFICATIONS -->
-<section id="certifications">
-  <div class="container fade-in">
-    <div class="section-label">Credentials</div>
-    <h2 class="section-title">Certifications</h2>
-    <div class="cert-grid">
+---
 
-      <div class="cert-card">
-        <div class="cert-icon">🤖</div>
-        <div>
-          <div class="cert-name">Generative AI with LangChain &amp; HuggingFace</div>
-          <div class="cert-issuer">Udemy</div>
-          <div class="cert-desc">LangChain, RAG pipelines, HuggingFace models, AI Agents, LLM orchestration and production deployment patterns.</div>
-          <a class="cert-link" href="https://www.udemy.com/certificate/UC-1c29da31-bec9-4bb6-9b42-9a8fa2275edb/" target="_blank">View Certificate ↗</a>
-        </div>
-      </div>
+### 🟣 FloatChat AI — Ocean Intelligence Assistant
+> RAG-based multimodal chatbot over 50TB+ ARGO ocean float datasets. Built at Nextwave GenAI Hackathon (48-hour, Noida) as Team Lead.
 
-      <div class="cert-card">
-        <div class="cert-icon">📊</div>
-        <div>
-          <div class="cert-name">Data Science, ML, Deep Learning &amp; NLP Bootcamp</div>
-          <div class="cert-issuer">Udemy</div>
-          <div class="cert-desc">End-to-end ML pipelines, deep learning with TensorFlow/Keras, NLP, feature engineering, and model deployment.</div>
-          <a class="cert-link" href="https://www.udemy.com/certificate/UC-444c073c-100e-4638-afd5-27743417fdda/" target="_blank">View Certificate ↗</a>
-        </div>
-      </div>
+- 90% answer parity to ChatGPT, hallucination reduction via retrieval verification + cross-check agents
+- Latency <2s, fallback LLM strategy — multi-agent: retrieval → verifier → cross-checker → responder
 
-      <div class="cert-card">
-        <div class="cert-icon">🐍</div>
-        <div>
-          <div class="cert-name">Data Analysis with Python</div>
-          <div class="cert-issuer">IBM · CognitiveClass.ai</div>
-          <div class="cert-desc">NumPy, Pandas, Matplotlib, data wrangling, exploratory data analysis and statistical foundations.</div>
-          <a class="cert-link" href="https://courses.cognitiveclass.ai/" target="_blank">IBM CognitiveClass ↗</a>
-        </div>
-      </div>
+**Stack:** `Python` `RAG` `ChromaDB` `LangChain` `LangGraph` `Groq`
 
-    </div>
-  </div>
-</section>
+[![GitHub](https://img.shields.io/badge/GitHub-Repo-181717?style=flat&logo=github)](https://github.com/aryan-Patel-web/FloatChat_AI)
 
-<hr class="section-divider" />
+---
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-links">
-    <a class="footer-link" href="https://github.com/aryan-Patel-web" target="_blank">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-      GitHub
-    </a>
-    <a class="footer-link" href="https://www.linkedin.com/in/aryan-patel-97396524b/" target="_blank">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-      LinkedIn
-    </a>
-    <a class="footer-link" href="https://velocityfly.com" target="_blank">🚀 VelocityFly.com</a>
-    <a class="footer-link" href="mailto:patelaryan77462@gmail.com">📧 patelaryan77462@gmail.com</a>
-  </div>
-  <div class="footer-copy">© 2026 Aryan Patel · B.Tech CSE · IIIT Manipur 2027</div>
-</footer>
+### 🟣 PitchGroww-AI — Startup Pitch Analyzer
+> Multi-agent pipeline that analyzes, rewrites, and delivers investor-ready pitch decks with agentic email + WhatsApp automation.
 
-<script>
-  const observer = new IntersectionObserver(
-    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-    { threshold: 0.08 }
-  );
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-</script>
-</body>
-</html>
+- 3-agent pipeline: analyzer → domain advisor → stylist
+- Auto-generates investor-ready PDFs, delivers via Email + WhatsApp
+
+**Stack:** `Python` `CrewAI` `LangChain` `LangGraph` `PDF Gen`
+
+[![GitHub](https://img.shields.io/badge/GitHub-Repo-181717?style=flat&logo=github)](https://github.com/aryan-Patel-web)
+
+---
+
+## Achievements
+
+| | Achievement |
+|---|---|
+| 🏆 | **Amazon ML Challenge 2025 — Top 1%** among 183,000+ participants. ML-based product attribute extraction with multimodal pipeline (text + image). |
+| 🥇 | **Bajaj HackRx 2025 — Rank 88** · National GenAI Hackathon. Production-grade RAG system. Score: 694. |
+| ⚡ | **Nextwave GenAI Hackathon — Team Lead** · 48-hour GenAI Hackathon, Noida. Built FloatChat AI over 50TB+ ARGO ocean datasets. |
+| 💻 | **1,650+ GitHub Commits** · Sustained engineering output across ML, MLOps, Full-Stack, and GenAI projects over 12 months. |
+| 🚀 | **Solo Founder — VelocityFly AI** · 70K+ views, 600+ auto-published shorts, 140+ affiliate clicks with zero paid ads. |
+| 🔬 | **2 Research & AI Internships** · AI Autopilot @ QNu Labs (Indian Army/Navy QKDN) · Geospatial AI @ IIIT Nagpur (NHAI polygon creation). |
+
+---
+
+## Certifications
+
+| Certificate | Issuer |
+|---|---|
+| [Generative AI with LangChain & HuggingFace](https://www.udemy.com/certificate/UC-1c29da31-bec9-4bb6-9b42-9a8fa2275edb/) | Udemy |
+| [Data Science, ML, Deep Learning & NLP Bootcamp](https://www.udemy.com/certificate/UC-444c073c-100e-4638-afd5-27743417fdda/) | Udemy |
+| Data Analysis with Python | IBM · CognitiveClass.ai |
+
+---
+
+<div align="center">
+
+© 2026 Aryan Patel · B.Tech CSE · IIIT Manipur 2027
+
+[![GitHub](https://img.shields.io/badge/GitHub-aryan--Patel--web-181717?style=flat&logo=github)](https://github.com/aryan-Patel-web)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat&logo=linkedin)](https://www.linkedin.com/in/aryan-patel-97396524b/)
+[![Email](https://img.shields.io/badge/Email-Hire_Me-EA4335?style=flat)](mailto:patelaryan77462@gmail.com)
+
+</div>
