@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Aryan Patel — AI/ML & AI Full Stack Engineer</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
 <style>
@@ -20,6 +20,11 @@
     --accent4: #d2a8ff;
     --yellow: #e3b341;
     --orange: #f0883e;
+    --pink: #e1306c;
+    --fb: #4e9af1;
+    --li: #4da6f5;
+    --wa: #25d366;
+    --tw: #1d9bf0;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -32,14 +37,15 @@
     line-height: 1.6;
     overflow-x: hidden;
   }
+  img { max-width: 100%; }
 
   /* ── NAV ── */
   nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
     background: rgba(7,9,16,0.92);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border);
-    padding: 0 1.5rem;
+    padding: 0 1.25rem;
     display: flex; align-items: center; justify-content: space-between;
     height: 54px;
   }
@@ -47,21 +53,42 @@
   .nav-links { display: flex; gap: 1.25rem; list-style: none; }
   .nav-links a { color: var(--muted); font-size: 13px; text-decoration: none; font-weight: 500; transition: color 0.2s; }
   .nav-links a:hover { color: var(--text); }
-  .nav-cta { background: var(--accent); color: #000; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 700; text-decoration: none; }
-  @media (max-width: 640px) { .nav-links { display: none; } }
+  .nav-cta { background: var(--accent); color: #000; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+  .nav-right { display: flex; align-items: center; gap: 0.85rem; }
+  .nav-burger { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; padding: 6px; }
+  .nav-burger span { width: 20px; height: 2px; background: var(--text); border-radius: 2px; }
+  .mobile-menu {
+    display: none; position: fixed; top: 54px; left: 0; right: 0; z-index: 190;
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    padding: 0.5rem 1.25rem 1rem; flex-direction: column; gap: 0.15rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 600; padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
+  .mobile-menu a:last-child { border-bottom: none; }
+
+  @media (max-width: 720px) {
+    .nav-links { display: none; }
+    .nav-burger { display: flex; }
+  }
 
   /* ── HERO ── */
   .hero {
     min-height: 100vh; display: flex; align-items: center;
-    padding: 80px 1.5rem 4rem; position: relative; overflow: hidden;
+    padding: 84px 1.25rem 3rem; position: relative; overflow: hidden;
   }
   .hero::before {
     content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
     width: 800px; height: 500px;
-    background: radial-gradient(ellipse, rgba(88,166,255,0.08) 0%, transparent 70%);
+    background: radial-gradient(ellipse, rgba(88,166,255,0.10) 0%, transparent 70%);
     pointer-events: none;
   }
-  .hero-inner { max-width: 900px; margin: 0 auto; width: 100%; }
+  .hero::after {
+    content: ''; position: absolute; bottom: -160px; right: -120px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(210,168,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 920px; margin: 0 auto; width: 100%; }
   .hero-eyebrow {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px; color: var(--accent2); letter-spacing: 0.08em; text-transform: uppercase;
@@ -81,10 +108,9 @@
   .hero-tagline .hl2 { color: var(--accent2); }
   .hero-tagline .hl3 { color: var(--accent4); }
   .hero-tagline .hl4 { color: var(--yellow); }
-  .hero-desc { font-size: clamp(0.875rem, 2.5vw, 1rem); color: var(--muted); max-width: 620px; margin-bottom: 2rem; line-height: 1.75; }
+  .hero-desc { font-size: clamp(0.875rem, 2.5vw, 1rem); color: var(--muted); max-width: 640px; margin-bottom: 2rem; line-height: 1.75; }
   .hero-desc strong { color: var(--text); font-weight: 600; }
 
-  /* stats — scrollable row on mobile */
   .hero-stats {
     display: flex; flex-wrap: wrap; gap: 0;
     margin-bottom: 2rem;
@@ -107,21 +133,16 @@
   .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
 
   /* ── SHARED ── */
-  section { padding: 4rem 1.5rem; }
-  .container { max-width: 1060px; margin: 0 auto; }
+  section { padding: 3.75rem 1.25rem; }
+  .container { max-width: 1080px; margin: 0 auto; }
   .section-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.35rem; }
-  .section-title { font-size: clamp(1.6rem, 4vw, 2rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1.75rem; color: var(--text); }
-  .section-divider { border: none; border-top: 1px solid var(--border); margin: 0 1.5rem; }
+  .section-title { font-size: clamp(1.6rem, 4vw, 2rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.6rem; color: var(--text); }
+  .section-sub { font-size: 13px; color: var(--muted); max-width: 640px; margin-bottom: 1.75rem; line-height: 1.6; }
+  .section-divider { border: none; border-top: 1px solid var(--border); margin: 0 1.25rem; }
 
   /* ── SKILLS ── */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.85rem;
-  }
-  /* on tablet: 2 cols */
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.85rem; }
   @media (max-width: 860px) { .skills-grid { grid-template-columns: repeat(2, 1fr); } }
-  /* on mobile: 1 col, full width */
   @media (max-width: 540px)  { .skills-grid { grid-template-columns: 1fr; } }
 
   .skill-card {
@@ -130,6 +151,7 @@
     border: 1px solid var(--border);
     border-left-width: 3px;
     transition: transform 0.2s;
+    min-width: 0;
   }
   .skill-card:hover { transform: translateY(-2px); }
   .skill-card.sk-ai    { border-left-color: var(--accent); }
@@ -138,16 +160,11 @@
   .skill-card.sk-fs    { border-left-color: var(--yellow); }
   .skill-card.sk-db    { border-left-color: var(--orange); }
 
-  /* db card spans 2 cols on tablet+, 1 on mobile */
   .skill-card.sk-db { grid-column: span 1; }
   @media (min-width: 541px) { .skill-card.sk-db { grid-column: span 2; } }
   @media (min-width: 861px) { .skill-card.sk-db { grid-column: span 3; } }
 
-  .skill-card-title {
-    font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
-    text-transform: uppercase; margin-bottom: 0.65rem;
-    display: flex; align-items: center; gap: 0.35rem;
-  }
+  .skill-card-title { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.65rem; display: flex; align-items: center; gap: 0.35rem; }
   .sk-ai    .skill-card-title { color: var(--accent); }
   .sk-mlops .skill-card-title { color: var(--accent2); }
   .sk-genai .skill-card-title { color: var(--accent4); }
@@ -155,14 +172,7 @@
   .sk-db    .skill-card-title { color: var(--orange); }
 
   .skill-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
-  .skill-tag {
-    background: var(--surface2); color: var(--muted);
-    padding: 3px 8px; border-radius: 4px;
-    font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 500;
-    border: 1px solid var(--border);
-    transition: color 0.15s, border-color 0.15s;
-    white-space: nowrap;
-  }
+  .skill-tag { background: var(--surface2); color: var(--muted); padding: 3px 8px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 500; border: 1px solid var(--border); transition: color 0.15s, border-color 0.15s; white-space: nowrap; }
   .sk-ai    .skill-tag:hover { color: var(--accent);  border-color: var(--accent); }
   .sk-mlops .skill-tag:hover { color: var(--accent2); border-color: var(--accent2); }
   .sk-genai .skill-tag:hover { color: var(--accent4); border-color: var(--accent4); }
@@ -171,11 +181,7 @@
 
   /* ── EXPERIENCE ── */
   .exp-list { display: flex; flex-direction: column; gap: 1rem; }
-  .exp-card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 12px; padding: 1.35rem; position: relative; overflow: hidden;
-    transition: border-color 0.2s, transform 0.2s;
-  }
+  .exp-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.35rem; position: relative; overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
   .exp-card:hover { border-color: var(--border2); transform: translateY(-1px); }
   .exp-card.featured { border-color: rgba(88,166,255,0.3); }
   .exp-card.featured::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent4)); }
@@ -189,32 +195,69 @@
   .exp-bullets li { font-size: 13px; color: var(--muted); padding: 3px 0 3px 1rem; position: relative; line-height: 1.55; }
   .exp-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--accent2); font-size: 11px; top: 5px; }
 
-  .traction-banner {
-    background: var(--surface2); border: 1px solid rgba(63,185,80,0.3);
-    border-radius: 8px; padding: 0.85rem 1rem;
-    display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.85rem;
-  }
+  .traction-banner { background: var(--surface2); border: 1px solid rgba(63,185,80,0.3); border-radius: 8px; padding: 0.85rem 1rem; display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.85rem; }
   .traction-item { display: flex; flex-direction: column; }
   .traction-num { font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; font-weight: 700; color: var(--accent2); line-height: 1; }
   .traction-label { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
 
   .platform-row { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.5rem 0 0.65rem; }
-  .plat-pill { font-size: 11px; font-weight: 600; padding: 4px 10px; border-radius: 20px; text-decoration: none; display: flex; align-items: center; gap: 4px; white-space: nowrap; }
+  .plat-pill { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; text-decoration: none; display: flex; align-items: center; gap: 5px; white-space: nowrap; }
+  .plat-pill .dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
   .plat-yt  { background: #ff000022; color: #ff4444; border: 1px solid #ff444444; }
-  .plat-ig  { background: #e1306c22; color: #e1306c; border: 1px solid #e1306c44; }
-  .plat-fb  { background: #1877f222; color: #4e9af1; border: 1px solid #1877f244; }
-  .plat-wa  { background: #25d36622; color: #25d366; border: 1px solid #25d36644; }
-  .plat-rd  { background: #ff451422; color: #ff6534; border: 1px solid #ff451444; }
+  .plat-yt  .dot { background: #ff4444; box-shadow: 0 0 6px #ff4444; }
+  .plat-ig  { background: #e1306c22; color: var(--pink); border: 1px solid #e1306c44; }
+  .plat-ig  .dot { background: var(--pink); box-shadow: 0 0 6px var(--pink); }
+  .plat-fb  { background: #1877f222; color: var(--fb); border: 1px solid #1877f244; }
+  .plat-fb  .dot { background: var(--fb); box-shadow: 0 0 6px var(--fb); }
+  .plat-li  { background: rgba(10,102,194,0.14); color: var(--li); border: 1px solid rgba(10,102,194,0.35); }
+  .plat-li  .dot { background: var(--li); box-shadow: 0 0 6px var(--li); }
+  .plat-wa  { background: #25d36618; color: var(--wa); border: 1px dashed #25d36655; opacity: 0.85; }
+  .plat-wa  .dot { background: var(--wa); }
+  .plat-tw  { background: #1d9bf018; color: var(--tw); border: 1px dashed #1d9bf055; opacity: 0.85; }
+  .plat-tw  .dot { background: var(--tw); }
+
+  /* ── CAPABILITY STRIP ── */
+  .cap-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.6rem; margin: 0.85rem 0; }
+  @media (max-width: 760px) { .cap-strip { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .cap-strip { grid-template-columns: 1fr; } }
+  .cap-item { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 0.7rem 0.8rem; display: flex; gap: 0.55rem; align-items: flex-start; }
+  .cap-emoji { font-size: 1rem; flex-shrink: 0; line-height: 1.3; }
+  .cap-title { font-size: 11.5px; font-weight: 700; color: var(--text); margin-bottom: 1px; }
+  .cap-desc { font-size: 10.5px; color: var(--muted); line-height: 1.4; }
+
+  /* ── PLATFORM HUB (new) ── */
+  .platform-hub-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.85rem; margin-bottom: 1.25rem; }
+  @media (max-width: 860px) { .platform-hub-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 540px) { .platform-hub-grid { grid-template-columns: 1fr; } }
+
+  .phub-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem; position: relative; overflow: hidden; transition: transform 0.2s, border-color 0.2s; min-width: 0; }
+  .phub-card:hover { transform: translateY(-2px); }
+  .phub-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
+  .phub-card.p-yt::before { background: #ff4444; }
+  .phub-card.p-ig::before { background: linear-gradient(90deg,#feda75,#d62976,#4f5bd5); }
+  .phub-card.p-fb::before { background: var(--fb); }
+  .phub-card.p-li::before { background: var(--li); }
+  .phub-card.p-wa::before { background: repeating-linear-gradient(90deg, var(--wa) 0 8px, transparent 8px 14px); }
+  .phub-card.p-tw::before { background: repeating-linear-gradient(90deg, var(--tw) 0 8px, transparent 8px 14px); }
+
+  .phub-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.6rem; }
+  .phub-name { font-size: 13.5px; font-weight: 800; display: flex; align-items: center; gap: 0.4rem; }
+  .phub-status { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 7px; border-radius: 20px; display: flex; align-items: center; gap: 4px; white-space: nowrap; }
+  .status-live { background: rgba(63,185,80,0.12); color: var(--accent2); border: 1px solid rgba(63,185,80,0.3); }
+  .status-live .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent2); box-shadow: 0 0 5px var(--accent2); animation: pulse 1.6s infinite; }
+  .status-dev { background: rgba(227,179,65,0.1); color: var(--yellow); border: 1px dashed rgba(227,179,65,0.4); }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+  .phub-feats { list-style: none; margin-bottom: 0; }
+  .phub-feats li { font-size: 11.5px; color: var(--muted); padding: 2.5px 0 2.5px 1rem; position: relative; line-height: 1.45; }
+  .phub-feats li::before { content: '✓'; position: absolute; left: 0; color: var(--accent2); font-size: 10px; top: 4px; font-weight: 700; }
+  .phub-card.dev .phub-feats li::before { content: '◌'; color: var(--yellow); }
+  .phub-card.dev .phub-feats li { color: #8a8f98; }
 
   /* ── PROJECTS ── */
   .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   @media (max-width: 700px) { .projects-grid { grid-template-columns: 1fr; } }
-  .proj-card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 12px; padding: 1.35rem;
-    display: flex; flex-direction: column; gap: 0.75rem;
-    transition: border-color 0.2s, transform 0.2s; position: relative; overflow: hidden;
-  }
+  .proj-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.35rem; display: flex; flex-direction: column; gap: 0.75rem; transition: border-color 0.2s, transform 0.2s; position: relative; overflow: hidden; min-width: 0; }
   .proj-card:hover { border-color: var(--border2); transform: translateY(-2px); }
   .proj-card.full-width { grid-column: 1 / -1; }
   .proj-card.mlops-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent2), var(--accent)); }
@@ -247,7 +290,7 @@
 
   .flows-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; margin-top: 0.35rem; }
   @media (max-width: 580px) { .flows-grid { grid-template-columns: 1fr; } }
-  .flow-card { background: var(--surface2); border-radius: 8px; padding: 1rem; border: 1px solid var(--border); }
+  .flow-card { background: var(--surface2); border-radius: 8px; padding: 1rem; border: 1px solid var(--border); min-width: 0; }
   .flow-title { font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.5rem; }
   .flow-steps { list-style: none; counter-reset: step; }
   .flow-steps li { font-size: 12px; color: var(--muted); padding: 3px 0 3px 1.5rem; position: relative; counter-increment: step; line-height: 1.4; }
@@ -261,10 +304,19 @@
   .demo-channel { background: var(--surface); color: var(--text); border: 1px solid var(--border2); }
   .demo-flow    { background: linear-gradient(135deg, var(--accent), var(--accent4)); color: #000; font-weight: 800; }
 
+  /* ── PRICING (business model) ── */
+  .pricing-strip { display: flex; flex-wrap: wrap; gap: 0.55rem; margin: 0.4rem 0 0.2rem; }
+  .price-pill { flex: 1 1 150px; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 0.65rem 0.8rem; }
+  .price-pill .pp-name { font-size: 11px; font-weight: 700; color: var(--text); }
+  .price-pill .pp-amt { font-family: 'JetBrains Mono', monospace; font-size: 15px; font-weight: 800; color: var(--accent2); margin: 2px 0; }
+  .price-pill .pp-desc { font-size: 10px; color: var(--muted); line-height: 1.4; }
+  .price-pill.pro { border-color: rgba(210,168,255,0.4); }
+  .price-pill.pro .pp-amt { color: var(--accent4); }
+
   /* ── ACHIEVEMENTS ── */
   .ach-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.85rem; }
   @media (max-width: 540px) { .ach-grid { grid-template-columns: 1fr; } }
-  .ach-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem; display: flex; align-items: flex-start; gap: 0.85rem; transition: border-color 0.2s; }
+  .ach-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem; display: flex; align-items: flex-start; gap: 0.85rem; transition: border-color 0.2s; min-width: 0; }
   .ach-card:hover { border-color: var(--yellow); }
   .ach-icon { font-size: 1.3rem; flex-shrink: 0; width: 38px; height: 38px; background: rgba(227,179,65,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
   .ach-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
@@ -273,13 +325,7 @@
   /* ── CERTIFICATIONS ── */
   .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.85rem; }
   @media (max-width: 540px) { .cert-grid { grid-template-columns: 1fr; } }
-  .cert-card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 10px; padding: 1.1rem 1.25rem 1.1rem 1.25rem;
-    display: flex; align-items: flex-start; gap: 0.85rem;
-    transition: border-color 0.2s, transform 0.2s;
-    position: relative; overflow: hidden;
-  }
+  .cert-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem 1.25rem; display: flex; align-items: flex-start; gap: 0.85rem; transition: border-color 0.2s, transform 0.2s; position: relative; overflow: hidden; min-width: 0; }
   .cert-card::before { content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, var(--accent), var(--accent4)); }
   .cert-card:hover { border-color: rgba(88,166,255,0.4); transform: translateY(-1px); }
   .cert-icon { font-size: 1.3rem; flex-shrink: 0; }
@@ -290,7 +336,7 @@
   .cert-link:hover { text-decoration: underline; }
 
   /* ── FOOTER ── */
-  footer { border-top: 1px solid var(--border); padding: 2rem 1.5rem; text-align: center; }
+  footer { border-top: 1px solid var(--border); padding: 2rem 1.25rem; text-align: center; }
   .footer-links { display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap; margin-bottom: 0.85rem; }
   .footer-link { color: var(--muted); text-decoration: none; font-size: 13px; display: flex; align-items: center; gap: 5px; transition: color 0.2s; }
   .footer-link:hover { color: var(--accent); }
@@ -299,6 +345,12 @@
   /* ── ANIMATIONS ── */
   .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 480px) {
+    section { padding: 2.75rem 1rem; }
+    .hero { padding: 76px 1rem 2.5rem; }
+    .exp-card, .proj-card, .phub-card { padding: 1rem; }
+  }
 </style>
 </head>
 <body>
@@ -306,15 +358,27 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo">aryan-patel.dev</div>
-  <ul class="nav-links">
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#achievements">Achievements</a></li>
-    <li><a href="#certifications">Certs</a></li>
-  </ul>
-  <a class="nav-cta" href="mailto:patelaryan77462@gmail.com">Hire Me</a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#platforms">Platforms</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#certifications">Certs</a></li>
+    </ul>
+    <a class="nav-cta" href="mailto:patelaryan77462@gmail.com">Hire Me</a>
+    <button class="nav-burger" id="burgerBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#skills">Skills</a>
+  <a href="#experience">Experience</a>
+  <a href="#platforms">Platforms</a>
+  <a href="#projects">Projects</a>
+  <a href="#achievements">Achievements</a>
+  <a href="#certifications">Certifications</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -328,16 +392,15 @@
       <span class="hl4">AWS · Docker · React · AI Automation</span>
     </p>
     <p class="hero-desc">
-      Solo Founder of <strong>VelocityFly AI</strong> — a live AI SaaS that has automated <strong>600+ YouTube Shorts</strong>, generated <strong>70K+ organic views</strong>, and driven <strong>140+ affiliate clicks</strong> with zero paid promotion. Building production AI systems end-to-end: MLOps pipelines on <strong>AWS EKS</strong> with DVC + MLflow, LLM-powered automation with FastAPI + Mistral, and full-stack React dashboards. <strong>Top 1%</strong> in Amazon ML Challenge among 183,000+ participants.
+      Solo Founder of <strong>VelocityFly AI</strong> — a live, multi-platform AI SaaS automating content, affiliate monetization, and scheduling across <strong>YouTube, Instagram, Facebook &amp; LinkedIn</strong>, with WhatsApp and X (Twitter) in active development. <strong>600+ Shorts</strong> published, <strong>70K+ organic views</strong>, <strong>140+ affiliate clicks</strong> — zero paid promotion. Also building production AI systems: MLOps on <strong>AWS EKS</strong>, LLM automation with FastAPI + Mistral/Qwen, and full-stack React dashboards. <strong>Top 1%</strong> in Amazon ML Challenge among 183,000+ participants.
     </p>
     <div class="hero-stats">
+      <div class="stat"><div class="stat-num">4<span>/6</span></div><div class="stat-label">Platforms Live</div></div>
       <div class="stat"><div class="stat-num">1,650<span>+</span></div><div class="stat-label">GitHub Commits</div></div>
-      <div class="stat"><div class="stat-num">70K<span>+</span></div><div class="stat-label">Organic YT Views</div></div>
+      <div class="stat"><div class="stat-num">70K<span>+</span></div><div class="stat-label">Organic Views</div></div>
       <div class="stat"><div class="stat-num">140<span>+</span></div><div class="stat-label">Affiliate Clicks · No Ads</div></div>
-      <div class="stat"><div class="stat-num">600<span>+</span></div><div class="stat-label">Shorts Automated</div></div>
-      <div class="stat"><div class="stat-num">10</div><div class="stat-label">Live Users</div></div>
+      <div class="stat"><div class="stat-num">600<span>+</span></div><div class="stat-label">Posts Automated</div></div>
       <div class="stat"><div class="stat-num">Top 1<span>%</span></div><div class="stat-label">Amazon ML · 183K+</div></div>
-      <div class="stat"><div class="stat-num">4</div><div class="stat-label">Production Systems Live</div></div>
     </div>
     <div class="hero-btns">
       <a class="btn-primary" href="https://github.com/aryan-Patel-web" target="_blank">
@@ -394,8 +457,8 @@
           <span class="skill-tag">LangChain</span><span class="skill-tag">LangGraph</span>
           <span class="skill-tag">CrewAI</span><span class="skill-tag">RAG</span>
           <span class="skill-tag">Prompt Engineering</span><span class="skill-tag">Mistral</span>
-          <span class="skill-tag">Groq</span><span class="skill-tag">Ollama</span>
-          <span class="skill-tag">ChromaDB</span><span class="skill-tag">FAISS</span>
+          <span class="skill-tag">Qwen 2.5</span><span class="skill-tag">Groq</span><span class="skill-tag">Ollama</span>
+          <span class="skill-tag">Qdrant</span><span class="skill-tag">ChromaDB</span><span class="skill-tag">FAISS</span>
           <span class="skill-tag">ElevenLabs</span><span class="skill-tag">AI Agents</span>
         </div>
       </div>
@@ -408,7 +471,7 @@
           <span class="skill-tag">Node.js</span><span class="skill-tag">Express.js</span>
           <span class="skill-tag">Flask</span><span class="skill-tag">REST APIs</span>
           <span class="skill-tag">JWT</span><span class="skill-tag">WebSockets</span>
-          <span class="skill-tag">Next.js</span>
+          <span class="skill-tag">OAuth 2.0</span><span class="skill-tag">Next.js</span>
         </div>
       </div>
 
@@ -440,20 +503,38 @@
       <div class="exp-card featured">
         <div class="exp-header">
           <div>
-            <div class="exp-role">AI/ML Intern — AI Autopilot</div>
+            <div class="exp-role">AI/ML Intern — QKDN AI Autopilot</div>
             <div class="exp-company">QNu Labs — Quantum Cybersecurity (Indian Army &amp; Navy Vendor) · Bengaluru</div>
           </div>
-          <div class="exp-duration">May 2026 – Present · 2 mo · Remote</div>
+          <div class="exp-duration">May 2026 – Present · Remote</div>
         </div>
         <div class="exp-stack">
-          <span class="exp-tag">FastAPI</span><span class="exp-tag">LangChain</span><span class="exp-tag">Ollama</span>
-          <span class="exp-tag">Mistral LLM</span><span class="exp-tag">scikit-learn</span><span class="exp-tag">Prophet</span>
-          <span class="exp-tag">InfluxDB</span><span class="exp-tag">React</span><span class="exp-tag">ReportLab</span>
+          <span class="exp-tag">FastAPI</span><span class="exp-tag">Qwen 2.5 7B</span><span class="exp-tag">Ollama</span>
+          <span class="exp-tag">Qdrant RAG</span><span class="exp-tag">LangChain</span><span class="exp-tag">scikit-learn</span>
+          <span class="exp-tag">InfluxDB</span><span class="exp-tag">React</span><span class="exp-tag">WebSockets</span>
         </div>
         <ul class="exp-bullets">
-          <li>Building AI Autopilot for live QKDN deployed with Indian Army &amp; Navy across 3+ active network nodes — LLM copilot reducing manual provisioning by ~60% via LangChain + Ollama</li>
-          <li>IsolationForest anomaly detection on QBER/SKR quantum key distribution streams with automated alerting</li>
-          <li>Automated PDF reporting pipeline with FastAPI + React dashboard for real-time network analytics</li>
+          <li>Building an agentic AI Autopilot that translates natural language into REST API calls against a live QKDN management server, reducing manual provisioning by ~60%</li>
+          <li>Qwen 2.5 7B (via Ollama) + Qdrant RAG pipeline for entity extraction, slot-filling, and hallucination-guarded action execution across physical &amp; digital network nodes</li>
+          <li>IsolationForest anomaly detection on QBER/SKR quantum key-distribution streams with automated alerting; FastAPI + WebSocket real-time dashboard</li>
+        </ul>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <div>
+            <div class="exp-role">Research Intern — Financial NLP</div>
+            <div class="exp-company">IISER Bhopal — Dept. of Data Science, under Dr. Akash Anil</div>
+          </div>
+          <div class="exp-duration">Jun 2026 – Present · On-site</div>
+        </div>
+        <div class="exp-stack">
+          <span class="exp-tag">QLoRA</span><span class="exp-tag">Mistral-7B</span><span class="exp-tag">Llama-3-8B</span>
+          <span class="exp-tag">RoBERTa</span><span class="exp-tag">HuggingFace</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Fine-tuned Mistral-7B-Instruct-v0.3 with QLoRA on the FinArg ECC AUC dataset — 78.22% macro-F1, beating the published paper baseline of 76.00%</li>
+          <li>Benchmarked Llama-3-8B-Instruct (76.64%) and RoBERTa-base (75.38%); diagnosed and fixed a retrieval-pool leakage bug in few-shot in-context learning experiments</li>
         </ul>
       </div>
 
@@ -463,32 +544,15 @@
             <div class="exp-role">Project Intern — Geospatial AI for NHAI</div>
             <div class="exp-company">IIIT Nagpur — Under Dr. Neha Kasture</div>
           </div>
-          <div class="exp-duration">Mar – May 2026 · 2 mo · Remote</div>
+          <div class="exp-duration">Mar – May 2026 · Remote</div>
         </div>
         <div class="exp-stack">
-          <span class="exp-tag">Python</span><span class="exp-tag">Streamlit</span><span class="exp-tag">OpenCV</span>
-          <span class="exp-tag">KML/KMZ</span><span class="exp-tag">Geospatial</span><span class="exp-tag">Folium</span><span class="exp-tag">openpyxl</span>
+          <span class="exp-tag">Python</span><span class="exp-tag">Google Roads API</span><span class="exp-tag">OpenCV</span>
+          <span class="exp-tag">KML/KMZ</span><span class="exp-tag">Geospatial</span><span class="exp-tag">openpyxl</span>
         </div>
         <ul class="exp-bullets">
-          <li>Automated geospatial road-marking for NHAI — KML pipeline with curvature detection and geodesic heading computation for polygon creation on curved roads</li>
-          <li>Production Streamlit web app with map visualization and automated KML/Excel reporting for PWD/NHAI government clients</li>
-        </ul>
-      </div>
-
-      <div class="exp-card">
-        <div class="exp-header">
-          <div>
-            <div class="exp-role">AI Research Intern</div>
-            <div class="exp-company">IISER Bhopal — Dept of Data Science</div>
-          </div>
-          <div class="exp-duration">2 months · Remote</div>
-        </div>
-        <div class="exp-stack">
-          <span class="exp-tag">Python</span><span class="exp-tag">ML Research</span><span class="exp-tag">Data Science</span>
-        </div>
-        <ul class="exp-bullets">
-          <li>AI/ML research direction, data science methodology &amp; experimentation under faculty guidance</li>
-          <li>Contributed to academic ML research with experimentation and analysis pipelines</li>
+          <li>Built a GIS BOQ tool for PWD/NHAI road safety — processes KML files and auto-generates CAP PTBM speed-breaker strip polygons using heading detection</li>
+          <li>Exported KML + Excel BOQ with satellite imagery overlays for government client review</li>
         </ul>
       </div>
 
@@ -496,38 +560,118 @@
         <div class="exp-header">
           <div>
             <div class="exp-role">AI Full-Stack Engineer &amp; Founder</div>
-            <div class="exp-company">VelocityFly AI — AI YouTube Automation &amp; Affiliate SaaS · <a href="https://velocityfly.com" target="_blank" style="color:var(--accent);text-decoration:none;">velocityfly.com ↗</a></div>
+            <div class="exp-company">VelocityFly AI — Multi-Platform Content &amp; Affiliate Automation SaaS · <a href="https://velocityfly.com" target="_blank" style="color:var(--accent);text-decoration:none;">velocityfly.com ↗</a></div>
           </div>
-          <div class="exp-duration">Sep 2025 – Present · 8 mo · Solo</div>
+          <div class="exp-duration">Sep 2025 – Present · Solo Founder</div>
         </div>
         <div class="exp-stack">
           <span class="exp-tag">FastAPI</span><span class="exp-tag">React</span><span class="exp-tag">MongoDB Atlas</span>
           <span class="exp-tag">Mistral LLM</span><span class="exp-tag">ElevenLabs TTS</span><span class="exp-tag">FFmpeg</span>
-          <span class="exp-tag">Google OAuth 2.0</span><span class="exp-tag">Stable Diffusion</span><span class="exp-tag">Render</span>
+          <span class="exp-tag">Meta &amp; Google OAuth 2.0</span><span class="exp-tag">Render</span>
         </div>
         <div class="traction-banner">
           <div class="traction-item"><div class="traction-num">70K+</div><div class="traction-label">Total Organic Views</div></div>
-          <div class="traction-item"><div class="traction-num">600+</div><div class="traction-label">Reels Auto-Published</div></div>
+          <div class="traction-item"><div class="traction-num">600+</div><div class="traction-label">Posts Auto-Published</div></div>
           <div class="traction-item"><div class="traction-num">140+</div><div class="traction-label">Affiliate Clicks · 0 Ads</div></div>
           <div class="traction-item"><div class="traction-num">10</div><div class="traction-label">Active Live Users</div></div>
-          <div class="traction-item"><div class="traction-num">3</div><div class="traction-label">YT Channels Automated</div></div>
+          <div class="traction-item"><div class="traction-num">4/6</div><div class="traction-label">Platforms Live</div></div>
         </div>
         <div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:0.07em;margin:0.25rem 0 0.35rem;">
-          🚀 Multi-Platform — One Affiliate URL → Every Platform
+          🚀 One Content Upload → Auto-Published Everywhere
         </div>
         <div class="platform-row">
-          <a class="plat-pill plat-yt" href="https://velocityfly.com/youtube" target="_blank">▶ YouTube · Live</a>
-          <a class="plat-pill plat-ig" href="https://velocityfly.com/instagram" target="_blank">📸 Instagram · Building</a>
-          <a class="plat-pill plat-fb" href="https://velocityfly.com/facebook-instagram" target="_blank">📘 Facebook · Building</a>
-          <a class="plat-pill plat-wa" href="https://velocityfly.com/whatsapp" target="_blank">💬 WhatsApp · Building</a>
-          <a class="plat-pill plat-rd" href="https://velocityfly.com/reddit-auto" target="_blank">🔴 Reddit · Building</a>
-          <span class="plat-pill" style="background:rgba(10,102,194,0.12);color:#4da6f5;border:1px solid rgba(10,102,194,0.3);">🔗 LinkedIn · Soon</span>
+          <a class="plat-pill plat-yt" href="https://velocityfly.com/youtube" target="_blank"><span class="dot"></span>▶ YouTube · Live</a>
+          <a class="plat-pill plat-ig" href="https://velocityfly.com/instagram" target="_blank"><span class="dot"></span>📸 Instagram · Live</a>
+          <a class="plat-pill plat-fb" href="https://velocityfly.com/facebook-instagram" target="_blank"><span class="dot"></span>📘 Facebook · Live</a>
+          <a class="plat-pill plat-li" href="https://velocityfly.com" target="_blank"><span class="dot"></span>🔗 LinkedIn · Live</a>
+          <span class="plat-pill plat-wa"><span class="dot"></span>💬 WhatsApp · In Dev</span>
+          <span class="plat-pill plat-tw"><span class="dot"></span>✕ Twitter/X · In Dev</span>
+        </div>
+        <div class="cap-strip">
+          <div class="cap-item"><div class="cap-emoji">🔗</div><div><div class="cap-title">Multi-Platform Publish</div><div class="cap-desc">One upload auto-adapted &amp; published to YouTube, Instagram, Facebook &amp; LinkedIn simultaneously</div></div></div>
+          <div class="cap-item"><div class="cap-emoji">💰</div><div><div class="cap-title">Affiliate Engine</div><div class="cap-desc">Live Amazon/Flipkart product fetch, dynamic affiliate URL injection per platform + 2-story parallel logic</div></div></div>
+          <div class="cap-item"><div class="cap-emoji">📅</div><div><div class="cap-title">Smart Scheduler</div><div class="cap-desc">Calendar-based queueing with IST-aware timezone handling for hands-free daily publishing</div></div></div>
+          <div class="cap-item"><div class="cap-emoji">🔄</div><div><div class="cap-title">Content Repurposing</div><div class="cap-desc">Single video/asset auto-reformatted into Shorts, Reels, Stories &amp; platform-tuned captions</div></div></div>
+          <div class="cap-item"><div class="cap-emoji">📩</div><div><div class="cap-title">Stories &amp; DM Automation</div><div class="cap-desc">Auto text &amp; affiliate stories on Instagram/Facebook + webhook-driven DM auto-reply</div></div></div>
+          <div class="cap-item"><div class="cap-emoji">🔐</div><div><div class="cap-title">Dual OAuth Routing</div><div class="cap-desc">Facebook Login vs. Instagram Direct Login, isolated token storage, long-lived token refresh</div></div></div>
+        </div>
+        <div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:0.07em;margin:0.35rem 0 0.35rem;">💳 Business Model</div>
+        <div class="pricing-strip">
+          <div class="price-pill"><div class="pp-name">Starter</div><div class="pp-amt">₹99/mo</div><div class="pp-desc">LinkedIn · 50 posts/mo</div></div>
+          <div class="price-pill"><div class="pp-name">Creator</div><div class="pp-amt">₹199/mo</div><div class="pp-desc">Instagram + Facebook · 150 posts/mo</div></div>
+          <div class="price-pill pro"><div class="pp-name">Pro</div><div class="pp-amt">₹299/mo</div><div class="pp-desc">All 4 live platforms · 400 posts/mo</div></div>
         </div>
         <ul class="exp-bullets">
-          <li>Production AI SaaS — YouTube content generation, publishing, engagement, and affiliate monetization using FastAPI microservices + LLM pipelines</li>
-          <li>Two-flow affiliate engine: User Type 1 uploads video → AI wraps with affiliate link; User Type 2 (no video) → auto-creates promo slideshow from Amazon/Flipkart product images and uploads as YouTube Short on schedule</li>
-          <li>Sub-3s latency · AI comment auto-reply · Live thumbnail updater · Analytics dashboard (last 28 days) · Multi-language TTS (Hindi/Hinglish/Tamil/Telugu/Bengali)</li>
-          <li>Expanding: one affiliate URL auto-published across YouTube + Instagram + Facebook + WhatsApp + Reddit simultaneously — creator sets ID once, never again</li>
+          <li>Two-flow affiliate engine: upload-a-video → AI wraps with affiliate link; no-video → auto-generates promo slideshow from product images and publishes on schedule</li>
+          <li>Sub-3s latency · AI comment auto-reply · Live thumbnail updater · Analytics dashboard · Multi-language TTS (Hindi/Hinglish/Tamil/Telugu/Bengali)</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider" />
+
+<!-- PLATFORM HUB -->
+<section id="platforms">
+  <div class="container fade-in">
+    <div class="section-label">Multi-Platform Automation</div>
+    <h2 class="section-title">Where VelocityFly Publishes</h2>
+    <p class="section-sub">One content pipeline, six destinations. Four platforms are live in production; WhatsApp and X (Twitter) are actively in development.</p>
+
+    <div class="platform-hub-grid">
+
+      <div class="phub-card p-yt">
+        <div class="phub-top"><div class="phub-name">▶ YouTube</div><div class="phub-status status-live"><span class="dot"></span>Live</div></div>
+        <ul class="phub-feats">
+          <li>AI titles, descriptions, thumbnails &amp; auto-upload</li>
+          <li>Affiliate slideshow generation, no video needed</li>
+          <li>AI comment auto-reply + live thumbnail updater</li>
+        </ul>
+      </div>
+
+      <div class="phub-card p-ig">
+        <div class="phub-top"><div class="phub-name">📸 Instagram</div><div class="phub-status status-live"><span class="dot"></span>Live</div></div>
+        <ul class="phub-feats">
+          <li>Dual OAuth: Facebook Login &amp; IG Direct Login routing</li>
+          <li>Reels/video upload with duration validation</li>
+          <li>Text &amp; affiliate 2-story parallel publishing</li>
+          <li>Webhook-driven auto-DM reply &amp; lead capture</li>
+        </ul>
+      </div>
+
+      <div class="phub-card p-fb">
+        <div class="phub-top"><div class="phub-name">📘 Facebook</div><div class="phub-status status-live"><span class="dot"></span>Live</div></div>
+        <ul class="phub-feats">
+          <li>Dynamic affiliate content blocks per post</li>
+          <li>Page vs. IG business account routing</li>
+          <li>Story publishing synced with Instagram</li>
+        </ul>
+      </div>
+
+      <div class="phub-card p-li">
+        <div class="phub-top"><div class="phub-name">🔗 LinkedIn</div><div class="phub-status status-live"><span class="dot"></span>Live</div></div>
+        <ul class="phub-feats">
+          <li>Org-post publishing with personal-profile fallback</li>
+          <li>Professional tone auto-captioning</li>
+          <li>Integrated into unified scheduling engine</li>
+        </ul>
+      </div>
+
+      <div class="phub-card p-wa dev">
+        <div class="phub-top"><div class="phub-name">💬 WhatsApp</div><div class="phub-status status-dev">In Dev</div></div>
+        <ul class="phub-feats">
+          <li>Broadcast automation for affiliate drops</li>
+          <li>Twilio-based notification pipeline (prototyped)</li>
+        </ul>
+      </div>
+
+      <div class="phub-card p-tw dev">
+        <div class="phub-top"><div class="phub-name">✕ Twitter / X</div><div class="phub-status status-dev">In Dev</div></div>
+        <ul class="phub-feats">
+          <li>Thread automation with embedded affiliate links</li>
+          <li>Cross-post repurposing from YouTube/IG captions</li>
         </ul>
       </div>
 
@@ -592,8 +736,8 @@
 
       <div class="proj-card ai-card full-width">
         <span class="proj-badge badge-ai">AI Full-Stack · Startup · Live · Multi-Platform</span>
-        <div class="proj-title">VelocityFly AI — YouTube Automation &amp; Affiliate Monetization SaaS</div>
-        <div class="proj-desc">India's first platform combining AI content automation + affiliate monetization. Two complete user flows, multi-platform publishing, analytics dashboard — 70K+ organic views with 140+ affiliate clicks, zero paid promotion.</div>
+        <div class="proj-title">VelocityFly AI — Content, Affiliate &amp; Multi-Platform Automation SaaS</div>
+        <div class="proj-desc">India's first platform combining AI content automation + affiliate monetization across YouTube, Instagram, Facebook &amp; LinkedIn — with unified scheduling and one-URL affiliate distribution. WhatsApp &amp; X in active development. 70K+ organic views with 140+ affiliate clicks, zero paid promotion.</div>
         <div class="flows-grid">
           <div class="flow-card">
             <div class="flow-title">🎥 User Type 1 — Has a Video</div>
@@ -603,7 +747,7 @@
               <li>Select Amazon or Flipkart + product category</li>
               <li>App fetches product via official API (image, price, URL)</li>
               <li>Builds affiliate URL from stored ID (set once, in DB)</li>
-              <li>Auto-uploads to YouTube with affiliate link embedded</li>
+              <li>Auto-publishes to YouTube, Instagram, Facebook &amp; LinkedIn with affiliate link embedded</li>
             </ol>
           </div>
           <div class="flow-card">
@@ -612,17 +756,18 @@
               <li>Enter product category (earbuds, laptop, skincare…)</li>
               <li>Select Amazon / Flipkart + price filter</li>
               <li>App fetches product images, title, price via API</li>
-              <li>Auto-creates promo slideshow with price overlays</li>
-              <li>Embeds affiliate URL from stored ID in description</li>
-              <li>Auto-uploads YouTube Short on schedule — hands-free</li>
+              <li>Auto-creates promo slideshow / story with price overlays</li>
+              <li>Embeds affiliate URL from stored ID across every platform</li>
+              <li>Scheduler auto-publishes on a recurring cadence — hands-free</li>
             </ol>
           </div>
         </div>
         <ul class="proj-highlights">
+          <li>Content repurposing: one asset auto-adapted into Shorts, Reels, Stories &amp; platform-tuned captions</li>
+          <li>Stories &amp; DM automation: text/affiliate stories on Instagram &amp; Facebook, webhook-driven auto-reply on IG DMs</li>
+          <li>Dual OAuth routing (Facebook Login vs. IG Direct Login) with isolated token storage</li>
           <li>AI comment auto-reply · Live thumbnail updater · Multi-language TTS (Hindi, Hinglish, Tamil, Telugu, Bengali)</li>
-          <li>Analytics dashboard: last 28 days views, likes, subscribers, per-video performance</li>
-          <li>Image-to-video pipeline · Pixabay keyword → scheduled daily auto-uploads · AI thumbnail studio (3 styles/video)</li>
-          <li>Multi-platform: same affiliate URL published to YouTube → Instagram → Facebook → WhatsApp → Reddit simultaneously</li>
+          <li>Analytics dashboard: last 28 days views, likes, subscribers, per-post performance across all live platforms</li>
         </ul>
         <div class="demo-section">
           <h4>🎬 Demo Videos &amp; Live Channels</h4>
@@ -638,7 +783,7 @@
         <div class="proj-stack">
           <span class="proj-tech">FastAPI</span><span class="proj-tech">React</span><span class="proj-tech">MongoDB</span>
           <span class="proj-tech">Mistral LLM</span><span class="proj-tech">ElevenLabs</span><span class="proj-tech">FFmpeg</span>
-          <span class="proj-tech">Together AI FLUX</span><span class="proj-tech">Google OAuth</span><span class="proj-tech">YouTube Data API</span>
+          <span class="proj-tech">Meta Graph API</span><span class="proj-tech">LinkedIn API</span><span class="proj-tech">YouTube Data API</span>
         </div>
         <div class="proj-links">
           <a class="proj-link" href="https://github.com/aryan-Patel-web/Velocityfly.com" target="_blank">GitHub ↗</a>
@@ -728,11 +873,11 @@
       </div>
       <div class="ach-card">
         <div class="ach-icon">🚀</div>
-        <div><div class="ach-title">Solo Founder — VelocityFly AI</div><div class="ach-desc">Live AI SaaS — 70K+ views, 600+ auto-published shorts, 140+ affiliate clicks with zero paid ads.</div></div>
+        <div><div class="ach-title">Solo Founder — VelocityFly AI</div><div class="ach-desc">Live multi-platform AI SaaS — 70K+ views, 600+ auto-published posts, 140+ affiliate clicks with zero paid ads.</div></div>
       </div>
       <div class="ach-card">
         <div class="ach-icon">🔬</div>
-        <div><div class="ach-title">2 Research &amp; AI Internships</div><div class="ach-desc">AI Autopilot Intern @ QNu Labs (Indian Army/Navy QKDN) · Project Intern @ IIIT Nagpur (Geospatial AI for NHAI).</div></div>
+        <div><div class="ach-title">3 Research &amp; AI Internships</div><div class="ach-desc">AI Autopilot Intern @ QNu Labs (Indian Army/Navy QKDN) · Research Intern @ IISER Bhopal · Project Intern @ IIIT Nagpur (Geospatial AI for NHAI).</div></div>
       </div>
     </div>
   </div>
@@ -802,6 +947,11 @@
     { threshold: 0.06 }
   );
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  const burger = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
 </script>
 </body>
 </html>
