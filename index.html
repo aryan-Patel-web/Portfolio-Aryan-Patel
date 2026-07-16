@@ -200,6 +200,21 @@
   .traction-num { font-family: 'JetBrains Mono', monospace; font-size: 1.1rem; font-weight: 700; color: var(--accent2); line-height: 1; }
   .traction-label { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
 
+  /* ── TRACTION CARDS (VelocityFly module) ── */
+  .vf-traction-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.6rem; margin-bottom: 0.85rem; }
+  @media (max-width: 760px) { .vf-traction-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 480px) { .vf-traction-grid { grid-template-columns: repeat(2, 1fr); } }
+  .vf-traction-card { background: var(--surface2); border: 1px solid rgba(63,185,80,0.25); border-radius: 8px; padding: 0.65rem 0.7rem; }
+  .vf-traction-card .vf-t-num { font-family: 'JetBrains Mono', monospace; font-size: 1.05rem; font-weight: 700; color: var(--accent2); line-height: 1; }
+  .vf-traction-card .vf-t-label { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 3px; line-height: 1.3; }
+  .vf-ph-badge {
+    display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--accent3); background: rgba(247,129,102,0.1); border: 1px solid rgba(247,129,102,0.3);
+    padding: 4px 10px; border-radius: 20px; margin-bottom: 0.6rem;
+  }
+  .vf-ph-badge .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent3); box-shadow: 0 0 5px var(--accent3); animation: pulse 1.6s infinite; }
+
   .platform-row { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0.5rem 0 0.65rem; }
   .plat-pill { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; text-decoration: none; display: flex; align-items: center; gap: 5px; white-space: nowrap; }
   .plat-pill .dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
@@ -230,6 +245,8 @@
   @media (max-width: 860px) { .platform-hub-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 540px) { .platform-hub-grid { grid-template-columns: 1fr; } }
 
+  .vf-platform-slot { display: contents; }
+
   .phub-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem; position: relative; overflow: hidden; transition: transform 0.2s, border-color 0.2s; min-width: 0; }
   .phub-card:hover { transform: translateY(-2px); }
   .phub-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
@@ -253,6 +270,7 @@
   .phub-feats li::before { content: '✓'; position: absolute; left: 0; color: var(--accent2); font-size: 10px; top: 4px; font-weight: 700; }
   .phub-card.dev .phub-feats li::before { content: '◌'; color: var(--yellow); }
   .phub-card.dev .phub-feats li { color: #8a8f98; }
+  .phub-scope { font-size: 9.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.5rem; opacity: 0.7; }
 
   /* ── PROJECTS ── */
   .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -303,6 +321,16 @@
   .demo-main    { background: #ff0000; color: #fff; }
   .demo-channel { background: var(--surface); color: var(--text); border: 1px solid var(--border2); }
   .demo-flow    { background: linear-gradient(135deg, var(--accent), var(--accent4)); color: #000; font-weight: 800; }
+
+  /* ── DEMO CARDS (VelocityFly module) ── */
+  .vf-demo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+  @media (max-width: 700px) { .vf-demo-grid { grid-template-columns: 1fr; } }
+  .vf-demo-card { display: block; text-decoration: none; border-radius: 10px; overflow: hidden; background: var(--surface); border: 1px solid var(--border); transition: transform 0.2s, border-color 0.2s; }
+  .vf-demo-card:hover { transform: translateY(-2px); border-color: var(--border2); }
+  .vf-demo-thumb { position: relative; width: 100%; aspect-ratio: 16/9; background: #000; overflow: hidden; }
+  .vf-demo-thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .vf-demo-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 40px; height: 40px; border-radius: 50%; background: rgba(255,0,0,0.92); display: flex; align-items: center; justify-content: center; }
+  .vf-demo-caption { padding: 0.6rem 0.75rem; font-size: 11.5px; font-weight: 700; color: var(--text); }
 
   /* ── PRICING (business model) ── */
   .pricing-strip { display: flex; flex-wrap: wrap; gap: 0.55rem; margin: 0.4rem 0 0.2rem; }
@@ -572,13 +600,11 @@
           <span class="exp-tag">Mistral LLM</span><span class="exp-tag">ElevenLabs TTS</span><span class="exp-tag">FFmpeg</span>
           <span class="exp-tag">Meta &amp; Google OAuth 2.0</span><span class="exp-tag">Render</span>
         </div>
-        <div class="traction-banner">
-          <div class="traction-item"><div class="traction-num">70K+</div><div class="traction-label">Total Organic Views</div></div>
-          <div class="traction-item"><div class="traction-num">600+</div><div class="traction-label">Posts Auto-Published</div></div>
-          <div class="traction-item"><div class="traction-num">140+</div><div class="traction-label">Affiliate Clicks · 0 Ads</div></div>
-          <div class="traction-item"><div class="traction-num">10</div><div class="traction-label">Active Live Users</div></div>
-          <div class="traction-item"><div class="traction-num">4/6</div><div class="traction-label">Platforms Live</div></div>
-        </div>
+
+        <span class="vf-ph-badge"><span class="dot"></span>Live on Product Hunt — this month</span>
+
+        <div id="vf-traction-cards"></div>
+
         <div style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:0.07em;margin:0.25rem 0 0.35rem;">
           🚀 One Content Upload → Auto-Published Everywhere
         </div>
@@ -625,42 +651,7 @@
 
     <div class="platform-hub-grid">
 
-      <div class="phub-card p-yt">
-        <div class="phub-top"><div class="phub-name">▶ YouTube</div><div class="phub-status status-live"><span class="dot"></span>Live</div></div>
-        <ul class="phub-feats">
-          <li>AI titles, descriptions, thumbnails &amp; auto-upload</li>
-          <li>Affiliate slideshow generation, no video needed</li>
-          <li>AI comment auto-reply + live thumbnail updater</li>
-        </ul>
-      </div>
-
-      <div class="phub-card p-ig">
-        <div class="phub-top"><div class="phub-name">📸 Instagram</div><div class="phub-status status-live"><span class="dot"></span>Live</div></div>
-        <ul class="phub-feats">
-          <li>Dual OAuth: Facebook Login &amp; IG Direct Login routing</li>
-          <li>Reels/video upload with duration validation</li>
-          <li>Text &amp; affiliate 2-story parallel publishing</li>
-          <li>Webhook-driven auto-DM reply &amp; lead capture</li>
-        </ul>
-      </div>
-
-      <div class="phub-card p-fb">
-        <div class="phub-top"><div class="phub-name">📘 Facebook</div><div class="phub-status status-live"><span class="dot"></span>Live</div></div>
-        <ul class="phub-feats">
-          <li>Dynamic affiliate content blocks per post</li>
-          <li>Page vs. IG business account routing</li>
-          <li>Story publishing synced with Instagram</li>
-        </ul>
-      </div>
-
-      <div class="phub-card p-li">
-        <div class="phub-top"><div class="phub-name">🔗 LinkedIn</div><div class="phub-status status-live"><span class="dot"></span>Live</div></div>
-        <ul class="phub-feats">
-          <li>Org-post publishing with personal-profile fallback</li>
-          <li>Professional tone auto-captioning</li>
-          <li>Integrated into unified scheduling engine</li>
-        </ul>
-      </div>
+      <div class="vf-platform-slot" id="vf-platform-cards"></div>
 
       <div class="phub-card p-wa dev">
         <div class="phub-top"><div class="phub-name">💬 WhatsApp</div><div class="phub-status status-dev">In Dev</div></div>
@@ -739,6 +730,7 @@
 
       <div class="proj-card ai-card full-width">
         <span class="proj-badge badge-ai">AI Full-Stack · Startup · Live · Multi-Platform</span>
+        <span class="vf-ph-badge"><span class="dot"></span>Live on Product Hunt — this month</span>
         <div class="proj-title">VelocityFly AI — Content, Affiliate &amp; Multi-Platform Automation SaaS</div>
         <div class="proj-desc">India's first platform combining AI content automation + affiliate monetization across YouTube, Instagram, Facebook &amp; LinkedIn — with unified scheduling and one-URL affiliate distribution. WhatsApp &amp; X in active development. 70K+ organic views with 140+ affiliate clicks, zero paid promotion.</div>
         <div class="flows-grid">
@@ -774,10 +766,8 @@
         </ul>
         <div class="demo-section">
           <h4>🎬 Demo Videos &amp; Live Channels</h4>
-          <div class="demo-links">
-            <a class="demo-link demo-flow" href="https://www.youtube.com/watch?v=4ekTDazr1xg" target="_blank">▶ Full Platform Demo</a>
-            <a class="demo-link demo-main" href="https://youtube.com/shorts/gWOB0PWRI2A" target="_blank">▶ Affiliate Demo</a>
-            <a class="demo-link demo-main" href="https://youtube.com/shorts/oaIXvEHIUXE" target="_blank">▶ Image-to-Video</a>
+          <div id="vf-demo-cards" class="vf-demo-grid"></div>
+          <div class="demo-links" style="margin-top:0.6rem;">
             <a class="demo-link demo-channel" href="https://www.youtube.com/@IIIT_Testing/shorts" target="_blank">📺 Channel 1</a>
             <a class="demo-link demo-channel" href="https://www.youtube.com/@RandomLuxuryFacts/posts" target="_blank">📺 Channel 2</a>
             <a class="demo-link demo-channel" href="https://velocityfly.com" target="_blank">🌐 Live Platform</a>
@@ -956,5 +946,6 @@
   burger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
   mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
 </script>
+<script type="module" src="./velocityfly-project.js"></script>
 </body>
 </html>
